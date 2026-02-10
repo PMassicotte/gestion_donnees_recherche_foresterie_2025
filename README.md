@@ -1,1 +1,1 @@
-# Atelier la gestion des données
+# Atelier de gestion des données

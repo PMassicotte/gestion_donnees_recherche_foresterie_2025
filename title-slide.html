@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title Slide</title>
+    <style>
+      .image-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .image-container img {
+        margin: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="$idprefix$title-slide">
+      <h1 class="title">$title$</h1>
+      $if(subtitle)$
+      <p class="subtitle">$subtitle$</p>
+      $endif$ $for(author)$
+      <p class="author">$author$</p>
+      $endfor$ $for(affiliation)$
+      <p class="affiliation">$affiliation$</p>
+      $endfor$ $if(date)$
+      <p class="date">$date$</p>
+      $endif$
+      <br />
+      <div class="logo-title">
+        <div class="image-container">
+          <img
+            src="img/ulaval.png"
+            height="200px"
+            alt="Laval University logo"
+          />
+          <img src="img/takuvik.png" height="180" alt="Takuvik logo" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

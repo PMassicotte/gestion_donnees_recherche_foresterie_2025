@@ -1,0 +1,8 @@
+flake.lock
+.direnv/
+/index_files
+
+/.quarto/
+**/*.quarto_ipynb
+/_site
+/index.html

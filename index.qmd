@@ -1,0 +1,1275 @@
+---
+title: "Data Management Best Practices"
+subtitle: "TODO"
+author: "Philippe Massicotte"
+institute: "Laval University"
+date: "2025-03-111"
+date-format: long
+title-slide-attributes:
+  data-background-size: 100% 100%
+  data-background-position: 100% 100%
+format:
+  revealjs:
+    template-partials:
+      - title-slide.html
+    fig-dpi: 300
+    theme: style/slides.scss
+    footer: "[{{< fa house >}} https://pmassicotte.github.io/todo](https://pmassicotte.github.io/todo)"
+    height: 1080
+    width: 1920
+    slide-number: c/t
+    transition: fade
+    background-transition: fade
+
+execute:
+  echo: false
+
+citation:
+  url: https://pmassicotte.github.io/journee_ppr_ulaval_2024
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = FALSE,
+  dev = "svg",
+  message = FALSE,
+  cache = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.height = 4L
+)
+
+# Crop extra white space around the plots
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+
+library(tidyverse)
+library(ggpmthemes)
+library(patchwork)
+library(stars)
+library(gt)
+library(rnaturalearthdata)
+library(rnaturalearthhires)
+library(tidytext)
+library(janitor)
+
+theme_set(theme_light_modified(base_family = "Montserrat"))
+theme_update(
+  strip.background = element_blank(),
+  panel.border = element_blank(),
+  axis.ticks = element_blank(),
+  strip.text = element_text(face = "bold", size = 14L),
+  plot.title = element_text(size = 18L, hjust = 0.5, color = "#474448")
+)
+```
+
+::: {.center-align}
+
+![](img/myname.png){width=600 fig-alt="Badge showing the name of the presenter (Philippe Massicotte)."}
+
+:::
+
+**Research assistant at Takuvik (Laval University)**
+
+Remote sensing, modeling, data science, data visualization, programming
+
+{{< fa brands github >}} https://github.com/PMassicotte
+
+{{< fa envelope >}} philippe.massicotte@takuvik.ulaval.ca
+
+{{< fa brands twitter >}} @philmassicotte
+
+{{< fa brands mastodon >}} https://fosstodon.org/@philmassicotte
+
+{{< fa blog >}} www.pmassicotte.com
+
+::: aside
+
+Unless otherwise stated, all images in this presentation are from [Microsoft Image Creator](https://www.bing.com/images/create).
+
+:::
+
+## Outlines
+
+::: {.incremental}
+
+- Open file formats for your data.
+  - Tabular data.
+  - Geographical data.
+
+- Files and data organization.
+
+- Tidying and formatting data.
+
+- Backups.
+
+- Publishing your data.
+
+:::
+
+# File formats {background-color="#2C404A"}
+
+::: {.center .v-center-container}
+
+{{< fa file-excel size=5x >}} {{< fa file-alt size=5x >}} {{< fa file-csv size=5x >}} {{< fa file-archive size=5x >}}
+
+:::
+
+## File formats
+
+The file format used to store data has important implications:
+
+- Allows to [re-open]{.emphasize} and [re-use]{.emphasize} your data in the future:
+  - Software's might not be cross-platform (Windows/Mac/Linux).
+
+  - Proprietary file formats can become obsolete or unsupported.
+
+::: {.center-align}
+
+{{< fa brands windows size=5x >}} {{< fa brands apple size=5x >}} {{< fa brands linux size=5x >}}
+
+:::
+
+## Old-school computing in laboratories
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Laboratory computer programs often use proprietary file formats.
+
+This likely means that:
+
+::: {.incremental}
+
+1. You are forced to buy a license [which can be expensive]{.emphasize}.
+
+2. You depend on the commitment of the company to support the file format in the future.
+
+:::
+
+:::
+
+::: {.column width=50%}
+
+![](img/ai/old_school_lab.jpeg){width=800 fig-alt="Old-school laboratory"}
+
+:::
+
+::::
+
+## When you depend on profit companies
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+> At the Bodega Marine Laboratory at the University of California, Davis, some computers still run on **Microsoft Windows XP (released in 2001)**, because of the need to maintain compatibility with a scanning laser confocal microscope and other imaging equipment, says lab director Gary Cherr.
+
+> **To work with current Windows versions, the team would have to replace the whole microscope. The marginal potential gains aren’t yet worth the US\$400,000 expense**, Cherr reasons.
+
+:::
+
+::: {.column width=50%}
+
+![](img/ai/old_school_microscope.jpeg){width=600 fig-alt="Old-school microscope"}
+
+:::
+
+::::
+
+::: aside
+
+{{< fa newspaper >}} [Old-school computing: when your lab PC is ancient](https://www.nature.com/articles/d41586-021-01431-y)
+
+:::
+
+## File formats
+
+Ideally, the chosen file format should have these characteristics:
+
+::: {.incremental}
+
+1. **Non-proprietary**: open source.
+
+2. **Unencrypted**: [unless it contains personal or sensitive data.]{.emphasize}
+
+3. **Human-readable**: the file should be human-readable [or have open source tools available for reading and writing]{.emphasize}.
+
+4. **Performance**: consideration for efficient read and write operations, especially for large datasets, is crucial for optimal performance.
+
+:::
+
+## Common open-source text file formats
+
+Tabular plain text file formats:
+
+- `.CSV`: Comma (or semicolon) separated values.
+
+- `.TAB`: Tab separated values.
+
+- `.TXT` and `.DAT`: Plain text files ([data delimiter is not known]{.emphasize}).
+
+All these file formats can be opened using a simple text editor.
+
+## Examples of CSV and TSV files
+
+<!-- Screenshots made using maim -->
+<!-- maim ~/Desktop/penguins_tsv_format.png -g 1300x725+4070+210 -->
+
+![](img/artwork/lter_penguins.png){fig-alt="The Palmer penguin representation by Allison Horst. The image shows three penguins: Adelie, Chinstrap, and Gentoo." .top-right-img}
+
+This dataset contains 4 variables (columns). [The first line generally includes the names of the variables.]{.emphasize}
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+[A comma-separated values file (`.csv`).]{.smaller}
+
+![](./img/screenshots/penguins_csv_format.png){fig-alt="Screenshot of a CSV file with the content of the Palmer penguins dataset"}
+
+:::
+
+::: {.column width=50%}
+
+[A tabs separated values file (`.tsv`).]{.smaller}
+
+![](./img/screenshots/penguins_tsv_format.png){fig-alt="Screenshot of a TSV file with the content of the Palmer penguins dataset"}
+
+:::
+
+::::
+
+::: aside
+Data source: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. [https://allisonhorst.github.io/palmerpenguins/](https://allisonhorst.github.io/palmerpenguins/) Artwork by @allison_horst.
+:::
+
+## Common open-source geographic file formats
+
+These files contain information on geographic features such as [points, lines or polygons]{.emphasize}. There are a ton of [geographical file formats](https://gisgeography.com/gis-formats/), but here are some that are particularly popular.
+
+::: {.incremental}
+
+- ESRI shapefile (`.SHP`)
+  - Technically, the shapefile format is not open. [It is however widely used.]{.emphasize}
+
+- GeoJSON (`.json`, `.geojson`, JSON variant with simple geographical features)
+
+- GeoTIFF (`.tif`, `.tiff`, TIFF variant enriched with GIS relevant metadata)
+
+- GeoParquet (`.parquet`) is an [Open Geospatial Consortium (OGC) standard](https://geoparquet.org/) standard that adds interoperable geospatial types (Point, Line, Polygon) to [Apache Parquet](https://parquet.apache.org/).
+
+:::
+
+## The GeoJSON format (Polygons)
+
+This is a simple GeoJSON file defining 3 points that form a polygon.
+
+:::: {.columns}
+
+::: {.column width=25%}
+
+```{.json}
+{
+  "type": "Polygon",
+  "coordinates": [
+    [30, 10],
+    [10, 30],
+    [40, 40],
+    [30, 10]
+  ]
+}
+```
+
+:::
+
+::: {.column width=75%}
+
+```{r}
+#| message: false
+#| out-width: 50%
+#| crop: true
+#| dev: ragg_png
+sf_polygon <- sf::st_read(
+  '{ "type": "Polygon",
+    "coordinates": [
+        [[30, 10], [10, 30], [40, 40], [30, 10]]
+  ]
+}',
+  quiet = TRUE
+)
+
+sf_point <- sf_polygon |>
+  st_cast("POINT")
+
+sf_polygon |>
+  ggplot() +
+  geom_sf(linewidth = 3, color = "#3c3c3c") +
+  geom_sf(data = sf_point, size = 8, color = "red") +
+  coord_sf()
+```
+
+:::
+
+::::
+
+::: {.aside}
+
+Create your own GeoJSON file online at [https://geojson.io/](https://geojson.io/)
+
+:::
+
+## The GeoJSON format
+
+```{r}
+#| label: geojson
+#| out-width: 75%
+#| crop: true
+#| dev: ragg_png
+#| fig.cap: "Data: [https://bit.ly/2pAjOAr](https://bit.ly/2pAjOAr)"
+#| fig-alt: "The outline of the Colosseum amphitheatre in Rome created using a geojson file."
+url <-
+  "https://github.com/Robinlovelace/Creating-maps-in-R/raw/master/data/test-multifeature.geojson"
+sf <- sf::st_read(url, quiet = TRUE)
+sf |>
+  ggplot() +
+  geom_sf(linewidth = 0.25) +
+  labs(
+    title = str_wrap(
+      "The Colosseum amphitheatre in the centre of the city of Rome",
+      30
+    )
+  ) +
+  coord_sf() +
+  theme(
+    plot.title = element_text(size = 14, hjust = 0.5),
+    plot.title.position = "plot",
+    panel.grid = element_blank(),
+    axis.text = element_text(size = 6),
+  )
+```
+
+## The GeoTIFF format
+
+Often associated with satellite imagery.
+
+> GeoTIFF is a public domain metadata standard that allows [georeferencing information to be embedded within a TIFF file.]{.emphasize} The potential additional information includes map projection, coordinate systems, ellipsoids, datums, and everything else necessary to establish the exact spatial reference for the file.
+>
+> [Wikipedia](https://en.wikipedia.org/wiki/GeoTIFF)
+
+::: {.center-align}
+
+![](img/ai/geotiff.jpeg){width=600 fig-alt="AI generated image of a computer screen showing some sci-fi images."}
+
+:::
+
+## The GeoTIFF format (SST)
+
+A GeoTIFF can contain information such as the Sea Surface Temperature (SST).
+
+```{r}
+#| label: geotiff3
+#| cache: false
+#| fig-format: png
+#| crop: true
+#| fig-dpi: 300
+#| fig-alt: "Sea Surface Temperature (SST) in the St-Lawrence River."
+#| out-width: 75%
+poly <- read_sf(
+  '{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -66.44805908203125,
+              49.814948620925776
+            ],
+            [
+              -66.17340087890625,
+              49.814948620925776
+            ],
+            [
+              -66.17340087890625,
+              49.99891228081066
+            ],
+            [
+              -66.44805908203125,
+              49.99891228081066
+            ],
+            [
+              -66.44805908203125,
+              49.814948620925776
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}'
+)
+
+r <- read_stars(here::here("data", "sst_st_lawrence_river.tif"))
+
+ggplot() +
+  geom_stars(data = r) +
+  geom_sf(data = poly, fill = "red", color = NA) +
+  scale_fill_viridis_c(
+    breaks = scales::breaks_pretty(n = 6),
+    na.value = NA,
+    guide = guide_colorbar(
+      title.position = "top",
+      title.hjust = 0.5,
+      title.theme = element_text(family = "Montserrat", size = 8),
+      label.theme = element_text(family = "Montserrat", size = 6),
+      barwidth = unit(4, "cm"),
+      barheight = unit(0.2, "cm")
+    )
+  ) +
+  annotate(
+    "text",
+    x = -71,
+    y = 46.5,
+    label = "Quebec",
+    family = "Montserrat",
+    fontface = "bold",
+    size = 4
+  ) +
+  annotate(
+    "text",
+    x = -68.52396,
+    y = 48.44879,
+    label = "Rimouski",
+    family = "Montserrat",
+    fontface = "bold",
+    size = 4,
+    hjust = -0.25
+  ) +
+  labs(
+    fill = "Water temperature (°C)",
+    x = NULL,
+    y = NULL,
+    title = "SST in the St-Lawrence River (2020-01-20)"
+  ) +
+  theme(
+    legend.justification = c(0, 0),
+    legend.position = c(0.02, 0.8),
+    legend.direction = "horizontal",
+    legend.background = element_blank(),
+    plot.title = element_text(size = 12),
+    plot.caption = element_text(size = 8)
+  )
+```
+
+## The GeoTIFF format (SST)
+
+A closer look allows us to better visualize the values (i.e., water temperature) within each pixel.
+
+```{r}
+#| label: geotiff4
+#| cache: false
+#| fig-height: 3
+#| fig-format: png
+#| crop: true
+#| fig-dpi: 300
+pixel_values <- r[poly] |>
+  as_tibble() |>
+  rename(sst = 3)
+
+ggplot() +
+  geom_stars(data = r[poly], alpha = 0.75) +
+  # Using this hack to add N and W labels on the axis...
+  geom_sf(data = poly, fill = NA, color = NA) +
+  geom_text(
+    data = pixel_values,
+    aes(
+      x = x,
+      y = y,
+      label = round(sst, digits = 2)
+    ),
+    fontface = "bold",
+    size = 3
+  ) +
+  scale_fill_viridis_c() +
+  scale_x_continuous(breaks = seq(-70, -65, by = 0.1)) +
+  labs(
+    x = NULL,
+    y = NULL
+  ) +
+  coord_sf() +
+  guides(fill = "none")
+```
+
+## A note on geospatial data
+
+It is usually a better idea to work with spatial objects (ex.: `GeoTIFF`) rather than tabular data.
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+**Geographic data presented in a tabular form:**
+
+```{r}
+#| echo: false
+pixel_values |>
+  head() |>
+  rename(
+    longitude = x,
+    latitude = y
+  ) |>
+  gt() |>
+  tab_options(
+    table.width = pct(50),
+    table.font.size = 40,
+    column_labels.font.weight = "cold"
+  ) |>
+  fmt_number(
+    columns = "sst",
+    decimals = 2
+  )
+```
+
+:::
+
+::: {.column width=50%}
+
+**It is much easier to work with _spatial data_:**
+
+- Geometric operations
+
+- Geographic Projection
+
+- Data extraction
+
+- Joining
+
+- And much more!
+
+:::
+
+::::
+
+# File naming and project organization {background-color="#2C404A"}
+
+::: {.center-align}
+
+{{< fa folder-open size=5x >}} {{< fa file-csv size=5x >}} {{< fa file-alt size=5x >}}
+
+:::
+
+## File naming: who can relate?
+
+::: {.center-align}
+
+![](img/excalidraw/files_naming.png){width=70% fig-alt="Laptop showing a file explorer with files badly named."}
+
+:::
+
+## File naming basic rules
+
+There are a few rules to adopt when naming files:
+
+- Do not use special characters: **~ ! @ # $ % ^ & \* ( ) ; < > ? , [ ] { } é è à**
+- No spaces.
+
+This will ensure that the files are recognized by most operating systems and software.
+
+- [{{< fa check >}}]{style="color: #34A74BFF;"} `meeting_notes_jan2023.docx`
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `meeting notes(jan2023).docx`
+
+## File naming basic rules
+
+For sequential numbering, [use leading zeros to ensure files sort properly.]{.emphasize}
+
+- For example, use `0001`, `0002`, `1001` instead of `1`, `2`, `1001`.
+
+::: {.center-align}
+![](img/excalidraw/files_sorting.png){fig-alt="Image showing how files are sorted in a file explorer."}
+:::
+
+## When file naming goes wrong!
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+![Source: <a href="https://bit.ly/2M8cViI">https://bit.ly/2M8cViI</a>](img/screenshots/python_file_naming.png){fig-alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."}
+
+:::
+
+::: {.column width=50%}
+
+> The glitch caused results of a common chemistry computation to vary depending on the operating system used, causing discrepancies among **Mac**, **Windows**, and **Linux** systems.
+
+> ...the glitch, had to do with how different operating systems sort files.
+
+:::
+
+::::
+
+## When file naming goes wrong!
+
+[Data files were sorted differently depending on the operating system where the Python scripts were executed.]{.emphasize}
+
+::: {.center-align}
+![](img/excalidraw/files_sorting2.png){width=50% fig-alt="Image showing how files are sorted in a file explorer on Windows and Linux."}
+
+:::
+
+::: aside
+
+Original image from Bhandari Neupane, J. et al. Characterization of Leptazolines A-D, Polar Oxazolines from the Cyanobacterium Leptolyngbya sp., Reveals a Glitch with the “Willoughby-Hoye” Scripts for Calculating NMR Chemical Shifts. Org. Lett. 21, 8449-8453 (2019).
+
+:::
+
+## File naming basic rules
+
+::: {.incremental}
+
+- Be consistent and descriptive when naming your files.
+
+- Separate parts of file names with `_` or `-` to add useful information about the data:
+  - Project name.
+
+  - The sampling locations.
+
+  - Type of data/variable.
+
+  - Date (YYYY-MM-DD).
+
+- [Always use the ISO 8601 format:]{.emphasize} [ YYYY ]{.larger}-[ MM ]{.medium}-[ DD ]{.small} (large [{{< fa arrow-right >}}]{style="color: #d5695d"} small).
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} 12-04-09 (2012-04-09 or 2004-12-09 or 2009-04-12, or ..., There are a total of 6 possible combinations.)
+
+- [{{< fa check >}}]{style="color: #34A74BFF;"} 2012-04-09 (2012 April 9th)
+
+:::
+
+## File naming basic rules (examples)
+
+_Imagine that you have to create a file containing temperature data from a weather station._
+
+::: {.incremental}
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `data.csv` (not descriptive enough)
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_1` (what is the meaning of **1** ?, no number padding!)
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_20160708` (no file extension provided)
+
+- [{{< fa check >}}]{style="color: #34A74BFF;"} `station01_temperature_20160708.csv`
+
+:::
+
+. . .
+
+**Interesting resources:**
+
+[How to name files - Jennifer Bryan (YouTube)](https://www.youtube.com/watch?v=ES1LTlnpLMk)
+
+[How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel)
+
+# Working with data from other people {background-color="#2C404A"}
+
+::: {.center-align}
+
+![](https://media.giphy.com/media/3oxRmGXbquXKz6DNPq/giphy.gif){width=600}
+
+:::
+
+## Preserve information: keep your raw data raw
+
+Basic recommendations to preserve the raw data for future use:
+
+::: {.incremental}
+
+- Do not make any changes or corrections to the original raw data files.
+
+- [Use a scripted language (R, Python, Matlab, etc.) to perform analysis or make corrections and save that information in a separate file.]{.emphasize}
+
+- If you want to do some analyses in Excel ^[In fact, do not use Excel {{< fa thumbs-down >}}], make a copy of the file and do your calculations and graphs in the copy.
+
+:::
+
+. . .
+
+[Source: [Preserve information: Keep raw data raw](https://dataoneorg.github.io/Education/bestpractices/preserve-information-keep)]{.small}
+
+## Preserve information: keep your raw data raw
+
+If a script changes the content of a raw data file and [saves it in the same file, likely, the script will not work the second time because the structure of the file has changed]{.emphasize}.
+
+. . .
+
+::: {.center-align}
+
+![](img/excalidraw/keep_raw_data_raw_01.png){width=80% fig-alt="Image showing that data can change after the data is cleaned. The column name is separated into two columns firstname and lastname."}
+
+:::
+
+## Project directory structure
+
+::: {.incremental}
+
+- Choosing a logical and consistent way to organize your data files makes it easier for you and your colleagues to find and use your data.
+
+- Consider using a specific folder to store raw data files.
+
+- In my workflow, I use a folder named `raw` in which I consider files as [read-only]{.emphasize}.
+
+- [Data files produced by code]{.emphasize} are placed in a folder named `clean`.
+
+:::
+
+## Project directory structure
+
+::: {.center-align}
+
+![](img/excalidraw/project_structure.png){width=60% fig-alt="Schematic showing a project directory structure."}
+
+:::
+
+# Tidy data {background-color="#2C404A"}
+
+::: {.center-align}
+
+![](img/ai/tidydata.jpeg){width=700 fig-alt="AI generated image of a book and pencils on a desk."}
+
+:::
+
+## Why do we want tidy data?
+
+::: {.incremental}
+
+- Often said that [80% of the data analysis is dedicated to cleaning and data preparation!]{.emphasize}
+
+- Well-formatted data allows for quicker [visualization]{.emphasize}, [modeling]{.emphasize}, [manipulation]{.emphasize} and [archiving]{.emphasize}.
+
+:::
+
+. . .
+
+::: {.center-align}
+
+![Artwork by <a href="https://twitter.com/allison_horst?s=20">@allison_horst</a>](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/tidydata_3.jpg){width=50% alt-text="On the left is a happy cute fuzzy monster holding a rectangular data frame with a tool that fits the data frame shape. On the workbench behind the monster are other data frames of similar rectangular shape, and neatly arranged tools that also look like they would fit those data frames. The workbench looks uncluttered and tidy. The text above the tidy workbench reads “When working with tidy data, we can use the same tools in similar ways for different datasets…” On the right is a cute monster looking very frustrated, using duct tape and other tools to haphazardly tie data tables together, each in a different way. The monster is in front of a messy, cluttered workbench. The text above the frustrated monster reads “...but working with untidy data often means reinventing the wheel with one-time approaches that are hard to iterate or reuse."}
+
+:::
+
+## Tidy data
+
+The main idea is that data should be organized in columns with [each column representing only a single type of data]{.emphasize} (character, numerical, date, etc.).
+
+::: {.center-align}
+
+![Artwork by <a href="https://twitter.com/allison_horst?s=20">@allison_horst</a>](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/tidydata_1.jpg){width=70% fig-alt="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."}
+
+:::
+
+## How data is often structured
+
+- Many researchers structure their data in such a way that it is easily manipulated by a human, [but not so much programatically]{.emphasize}.
+
+- A common problem is that the columns represent values, not variable names.
+
+. . .
+
+[Example: a datasheet with species abundance data.]{.emphasize}
+
+::: {.center-align}
+
+![](img/excalidraw/species_wide.png){width=70% fig-alt="Image showing a frequent method to enter count data in spreadsheet software."}
+
+:::
+
+## How data should be structured
+
+After proper transformations, the data is now tidy ([or in normal form](https://en.wikipedia.org/wiki/Database_normalization)). [Each column is a variable, and each row is an observation.]{.emphasize}
+
+::: {.center-align}
+
+![](img/excalidraw/species_wide_to_long.png){width=90% fig-alt="Image showing a frequent method to enter count data in spreadsheet software."}
+
+:::
+
+## Keep your data as rectangle tables
+
+If you use a spreadsheet program, [keep your data arranged as rectangular tables]{.emphasize}. Otherwise, [it makes data importation difficult]{.emphasize}.
+
+::: {.center-align}
+
+![](img/ai/spreadsheet.jpeg){width=800 fig-alt="AI generated image of a piece of paper showing a spreadsheet."}
+
+:::
+
+## Keep your data as rectangle tables
+
+These two examples show the same data. One is arranged as two tables whereas the other is correctly formatted into a single rectangle table.
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+[{{< fa times >}}]{style="color: #E6352FFF;"} This sheet has two tables
+
+![](img/screenshots/data_rectangle2.png){height=50% fig-alt="Data in a computer spreadsheet program with two blocks of data."}
+
+:::
+
+::: {.column width=50%}
+
+[{{< fa check >}}]{style="color: #34A74BFF;"} This sheet has one table
+
+![](img/screenshots/data_rectangle1.png){width=600 fig-alt="Data in a computer spreadsheet program with one block of data."}
+
+:::
+
+::::
+
+## Keep your data as rectangle tables
+
+Do not be that person 😩😖😠😤😣🤦‍♀️🤦‍♂️😑😓
+
+![](img/screenshots/data_rectangle3.png){.r-stretch fig-alt="Data in a computer spreadsheet program. Data is not arranged in a rectangle table and there is a graphic placed inside the sheet."}
+
+# Variable names {background-color="#2C404A"}
+
+::: {.center-align}
+
+![](img/ai/variable_names.jpeg){width=800 fig-alt="AI generated image of a cartoonish man in front of what looks like a computer with variable names on the screen."}
+
+:::
+
+## Variable names
+
+. . .
+
+[Be consistent with variable name capitalizasion:]{.emphasize}
+
+[{{< fa check >}}]{style="color: #34A74BFF;"} `temperature`, `precipitation`
+
+[{{< fa check >}}]{style="color: #34A74BFF;"} `Temperature`, `Precipitation`
+
+. . .
+
+[Avoid mixing name capitalization:]{.emphasize}
+
+[{{< fa times >}}]{style="color: #E6352FFF;"} `temperature`, `Precipitation`
+
+[{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_min`, `TemperatureMax`
+
+## Variable names
+
+::: {.incremental}
+
+- Provide information about abbreviations.
+  - `tmin` vs `temperature_minimum`
+
+- Explicitly state the unit of each variable:
+  - `depth_m`, `area_km2`, `distance_km`, `wind_speed_ms`
+
+- Be consistent with variable names across files:
+  - `temp` vs `temperature`
+  - `user_name` vs `username`
+  - `last_updated` vs `updated_at`
+
+:::
+
+## Variable names
+
+Do not use special characters or spaces (same as for file names).
+
+::: {.center-align}
+
+![](img/screenshots/invalid_multibyte_string.png){width=70% fig-alt="Screenshot showing an error message in R when trying to read a file with a special character."}
+
+:::
+
+. . .
+
+```{.r}
+r$> read_csv("myfile.csv")
+Rows: 104937 Columns: 1
+Error in nchar(x, "width") : invalid multibyte string, element 1
+```
+
+::: aside
+
+Note the cells with more than one value in the column. This is a common issue when data is not tidy.
+
+:::
+
+## Missing values
+
+::: {.incremental}
+
+- [Missing values should be simply represented by spaces in your data files.]{.emphasize}
+
+- R, Python, Matlab and other programming languages deal well with this.
+
+- If not possible, use a standardized code to represent missing values:
+  - `NA`, `NaN`
+
+- [{{< fa exclamation-triangle >}}]{style="color: #E6352FFF;"} [Do not use a numerical value (ex.: **-999**) to indicate missing values.]{.emphasize}
+  - This can create situations where missing values will be silently included in calculations.
+  - Ex.: the average of these two vectors are different:
+    - `[1, NA, 3]` = 2
+    - `[1, -999, 3]` = -331.6
+
+:::
+
+## Visualization
+
+::: {.incremental}
+
+- Once data is tidy, [perform a visual inspection]{.emphasize} to make sure there are no obvious errors in your data.
+
+- A picture is worth a thousand words.
+  - [Always, always, always plot the data!]{.emphasize}
+
+- A histogram can be used to represent the distribution of numerical data.
+
+:::
+
+## Visualization
+
+In this example, we see that there is an outlier in the data. Measuring device fault? Manual entry error?
+
+```{r}
+#| label: histogram
+#| fig-alt: "Histogram of air temperature. A histogram is an accurate representation of the distribution of numerical data. Here we can observe that there is an outlier in the data."
+df <- read_csv(
+  "https://raw.githubusercontent.com/tidyverse/tidyr/master/vignettes/weather.csv"
+)
+
+df <- df |>
+  pivot_longer(-c(id:element), names_to = "day", values_to = "temperature") |>
+  drop_na() |>
+  mutate(day = parse_number(day)) |>
+  filter(element == "tmin")
+
+
+df$temperature[12] <- 123
+
+df_arrow <- tibble(
+  x = 110,
+  xend = 123,
+  y = 5,
+  yend = 2.2,
+  label = "Outlier?"
+)
+
+df |>
+  ggplot(aes(x = temperature)) +
+  geom_histogram(binwidth = 5, color = "white") +
+  labs(
+    title = "Histogram of air temperature",
+    subtitle = str_wrap(
+      "A histogram is an accurate representation of the distribution of numerical data. Here we can observe that there is an outlier in the data.",
+      90
+    )
+  ) +
+  geom_curve(
+    data = df_arrow,
+    aes(x = x, y = y, xend = xend, yend = yend),
+    curvature = -0.3,
+    arrow = arrow(length = unit(0.03, "npc")),
+    size = 0.5,
+    color = "#E60505FF"
+  ) +
+  geom_text(
+    data = df_arrow,
+    aes(x = x, y = y, label = label),
+    hjust = 1.1,
+    fontface = "bold",
+    color = "#E60505FF",
+    size = 6
+  ) +
+  xlab("Temperature (°C)") +
+  ylab("Count")
+```
+
+# Backups {background-color="#2C404A"}
+
+## It is not _if_, but _when_ your hard drive will fail.
+
+::: {.center-align}
+
+![](img/ai/hd_fail.jpeg){width=800 fig-alt="AI generated image of a hard drive failing with a person crying because of losing data."}
+
+:::
+
+## Backups vs Archives
+
+::: {.callout-note title="Backups"}
+
+A backup is a copy of data created to restore said data in case of damage or loss. **The original data is not deleted after a backup is made**.[^1]
+
+:::
+
+::: {.callout-note title="Archives"}
+
+**The series of managed activities necessary to ensure continued access to digital materials for as long as necessary.** Digital preservation is defined very broadly and refers to all of the actions required to maintain access to digital materials beyond the limits of media failure or technological change.
+
+Those materials may be records created during the day-to-day business of an organization; 'born-digital' materials created for a specific purpose(e.g., teaching resources); or the products of digitization projects. This definition specifically excludes the potential use of digital technology to preserve the original artefacts through digitization.[^2]
+
+:::
+
+[^1]: [Network World](https://www.networkworld.com/article/3285652/backup-vs-archive-why-its-important-to-know-the-difference.html)
+
+[^2]: [Dorey, J & Nappert, M. (2024, 7 novembre). La gestion des données de recherche : briser les silos et bâtir l’avenir [conférence]. Congrès des professionnel.le.s de l’information, Laval, Québec.](https://cpi.fmdoc.org/wp-content/uploads/2024/11/La-gestion-des-donnees-de-recherche-briser-les-silos-et-batir-lavenir.pdf)
+
+## Importance of backups
+
+::: {.incremental .medium}
+
+- [Disk space is much cheaper than the time you invested in collecting, cleaning and analyzing your
+  data.]{.emphasize}
+
+- It is important to have [redundancy]{.emphasize} in your data.
+
+- [{{< fa exclamation-triangle >}}]{style="color: #E6352FFF;"} A copy of your working directory in another directory on the same hard drive is not redundancy!
+
+- Backups should not be only done on your computer (use cloud services).
+
+- Google Drive
+
+- Microsoft OneDrive (1TB of space if working at Laval University)
+
+- Dropbox
+
+:::
+
+. . .
+
+::: {.callout-important title="Important"}
+
+Check with your institution or funding agency to see if they have a policy on data storage and backup. You may be required to use a specific service for sensitive data.
+
+:::
+
+## Importance of backups
+
+::: {.callout-note title="The 3-2-1 backup rule"}
+
+- **3 total copies** of your data (the original and two backups).
+
+- **2 different media types** for the backups (e.g., an external hard drive and cloud storage).
+
+- **1 copy stored offsite**, to protect against local disasters like fire or theft.
+
+:::
+
+## Importance of backups
+
+Use an incremental strategy to backup your data ([ideally daily]{.emphasize}):
+
+- [rsync](https://fr.wikipedia.org/wiki/Rsync)
+
+- [SyncBack](https://www.2brightsparks.com/syncback/syncback-hub.html)
+
+- [Duplicati](https://www.duplicati.com/)
+
+- [Syncthing](https://syncthing.net/)
+
+I keep three months of data at three different locations:
+
+1. On my computer.
+
+2. On an external hard drive.
+
+3. On a cloud service provided by my university.
+
+## Restoring from an incremental backup
+
+![](img/duplicati.png){.r-stretch fig-align="center" fig-alt="List of Duplicati backup jobs."}
+
+## Source code management
+
+- Backups of the source code used to generate data are also important.
+
+- [Git is a version control system]{.emphasize} used to keep track of changes in computer files.
+  - Primarily used for source code management in software development.
+  - Coordinating work on those files among multiple people.
+
+::: {.center-align}
+
+{{< fa brands github size=5x >}} {{< fa brands gitlab size=5x >}} {{< fa brands bitbucket size=5x >}}
+
+:::
+
+# Publishing your data {background-color="#2C404A"}
+
+## Publishing your data
+
+Many journals and [funding agencies](http://www.science.gc.ca/eic/site/063.nsf/fra/h_97610.html) now require to have archiving strategies. Why?
+
+::: {.incremental}
+
+- Share your data (publicly funded research should be accessible).
+
+- Make your data discoverable.
+
+- Make your data citable (using [DOI, Digital Object Identifier]{.emphasize}).
+  - Data collection is resource-intensive.
+  - Publishing allows others to credit your work.
+
+- Others can find and fix errors in your data.
+
+- Data can be reused in other studies.
+
+:::
+
+## Publishing your data
+
+The traditional way to publish data is to include it as supplementary information with your paper.
+
+- In an appendix along with your paper ([assuming that your paper is published in an open-access journal]{.emphasize}).
+- [Data presented in an appendix are rarely reviewed by peers.]{.emphasize}
+
+[The Directory of Open Access Journals](https://www.doaj.org/) is useful for searching for open access journals.
+
+![](img/logo/doaj_logo.png){.r-stretch fig-alt="Directory of Open Access Journals logo. The logo has three shapes on the left side and the text 'DOAJ' on the right side."}
+
+## Public announcement {{< fa bullhorn >}}
+
+. . .
+
+[Summary tables in a PDF article are not very useful!]{.emphasize .large}
+
+::: {.center-align}
+
+![](https://media.giphy.com/media/j9Y9vsklHWtjgHOtLk/giphy.gif){width=800 fig-alt="GIF showing a person throwing a book over his shoulder."}
+
+:::
+
+. . .
+
+You should rather provide the data in a way that is easily importable into a programming language as supplementary information (for example, a `CSV` file).
+
+## What is a data paper?
+
+Another way to publish data is to write a data paper.
+
+- Data papers are interesting alternatives to publish data:
+  - [Peer-reviewed]{.emphasize} (high-quality data, in theory!).
+  - Generally open access (obliviously!).
+  - Data are citable with a DOI.
+
+> A data paper is a **peer-reviewed document** describing a dataset, published in a peer-reviewed journal. It takes effort to prepare, curate and describe data. Data papers provide recognition for this effort by means of a scholarly article.
+>
+> [https://www.gbif.org/data-papers](https://www.gbif.org/data-papers)
+
+## What is a data paper?
+
+A data paper is similar to a traditional scientific paper.
+
+::: {.center-align}
+
+![](img/screenshots/essd.png){width=50% fig-alt="Screenshot of the Earth System Science Data journal with an article featuring many authors."}
+
+:::
+
+## What is a data paper?
+
+The data associated with the paper is available online with an associated DOI.
+
+::: {.center-align}
+
+![](img/screenshots/seanoe.png){width=50% fig-alt="Screenshot of the Seanoe website showing a dataset with a DOI."}
+
+:::
+
+##
+
+```{r}
+#| echo: false
+#| fig-width: 12
+#| fig-height: 7
+#| fig-alt: "Bar plot showing the number of downloads per country for each dataset."
+url <- pins::board_url(
+  list(
+    seanoe = "https://www.seanoe.org/html/stat/2022/uj4mfvvquq-philippemassicottetakuvikulavalca.xls"
+  )
+)
+
+df <- url |>
+  pins::pin_download(name = "seanoe") |>
+  readxl::read_excel(skip = 2) |>
+  janitor::clean_names()
+
+df_viz <- df |>
+  mutate(country = fct_na_value_to_level(country, level = "Unknown")) |>
+  mutate(country = fct_lump(country, n = 9)) |>
+  count(dataset_title, country) |>
+  mutate(dataset_title = str_wrap(dataset_title, 55)) |>
+  mutate(country2 = country) |>
+  mutate(country = reorder_within(country, n, dataset_title))
+
+df_viz |>
+  ggplot(aes(x = n, y = country, fill = country2)) +
+  geom_col(position = "dodge") +
+  scale_y_reordered() +
+  ggthemes::scale_fill_tableau() +
+  labs(
+    x = "Number of downloads",
+    y = NULL,
+    title = glue::glue("Cumulative dataset downloads: {sum(df_viz$n)}")
+  ) +
+  facet_wrap(~dataset_title, scales = "free_y") +
+  theme(
+    legend.position = "none",
+    strip.background = element_blank(),
+    strip.text = element_text(size = 10, face = "bold", color = "white"),
+    axis.text = element_text(size = 10, face = "bold", color = "white"),
+    text = element_text(color = "white"),
+    panel.border = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill = "#3c3c3c"),
+    plot.background = element_rect(fill = "#3c3c3c"),
+    plot.title = element_text(size = 18, hjust = 0.5, color = "white")
+  )
+```
+
+## Open data repositories
+
+- Polar Data Catalogue [https://www.polardata.ca/](https://www.polardata.ca/)
+- Scholars Portal Dataverse [https://dataverse.scholarsportal.info/](https://dataverse.scholarsportal.info/)
+- Federated Research Data Repository [https://www.frdr-dfdr.ca/repo/?locale=fr](https://www.frdr-dfdr.ca/repo/?locale=fr)
+- Pangaea [https://www.pangaea.de/](https://www.pangaea.de/)
+- Dryad [https://datadryad.org](https://datadryad.org)
+- Catalogue de données ouverte OGSL [https://ogsl.ca/fr/](https://ogsl.ca/fr/)
+- Zenodo [https://zenodo.org/](https://zenodo.org/)
+- Figshare [https://figshare.com/](https://figshare.com/)
+- Seanoe [https://www.seanoe.org/](https://www.seanoe.org/)
+- NFS Arctic Data Center [https://arcticdata.io/](https://arcticdata.io/)
+- The Dataverse Project [https://dataverse.org/](https://dataverse.org/)
+
+# Take home messages {background-color="#2C404A"}
+
+## Take home messages
+
+::: {.incremental}
+
+- Choose non-proprietary file formats (ex.: `CSV`).
+
+- Give your files and variables meaningful names.
+
+- Tidy and visually explore your data to remove obvious errors.
+
+- [Backups your data externally as often as possible.]{.emphasize}
+  - Your hard drive will eventually crash, for sure!
+
+- Use a version control system (git) for your analysis scripts.
+
+- [When possible, share the data and the scripts that were used in your research papers.]{.emphasize}
+
+:::

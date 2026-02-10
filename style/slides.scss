@@ -1,0 +1,276 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+$font-family-sans-serif: "Ubuntu";
+$presentation-heading-font: "Ubuntu";
+
+$h1-font-size: 4.6rem !default;
+
+$theme-orange: #f69250;
+$theme-pastel: #9ec6be;
+
+/*-- scss:rules --*/
+.reveal table {
+  font-size: 0.75em;
+}
+
+.reveal blockquote {
+  color: #2c404a;
+  font-family: "Ubuntu";
+  font-weight: 400;
+  font-style: italic;
+}
+
+$black: #2c404a;
+$white: #ffffff;
+
+:root {
+  --r-background-color: #fdf6e3;
+  --r-main-font: Ubuntu;
+  --r-main-font-size: 50px;
+  --r-main-color: #2c404a;
+  --r-block-margin: 12px;
+  --r-heading-margin: 0 0 12px 0;
+  --r-heading-font: Fredoka One;
+  --r-heading-color: #2c404a;
+  --r-heading-line-height: 1.2;
+  --r-heading-letter-spacing: normal;
+  --r-heading-text-transform: uppercase;
+  --r-heading-text-shadow: none;
+  --r-heading-font-weight: 600;
+  --r-heading1-text-shadow: none;
+  --r-heading1-size: 3em;
+  --r-heading2-size: 1.8em;
+  --r-heading3-size: 1.3em;
+  --r-heading4-size: 1em;
+  --r-code-font: JetBrains Mono;
+  --r-link-color: $black;
+  --r-link-color-dark: #1a6091;
+  --r-link-color-hover: #4ca2df;
+  --r-selection-background-color: #d33682;
+  --r-selection-color: #fdf6e3;
+}
+
+// title slide
+#title-slide .title {
+  color: $black;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+#title-slide .quarto-title-authors {
+  color: $black;
+  text-align: left;
+}
+
+.reveal .quarto-title-block .quarto-title-authors {
+  display: flex;
+  justify-content: left;
+}
+
+.reveal .quarto-title-block .quarto-title-authors .quarto-title-author {
+  padding-left: 0;
+}
+
+// section title slide
+
+.reveal h1 {
+  font-family: "Poppins", serif;
+}
+
+.reveal h2 {
+  font-family: "Baloo 2", serif;
+  font-size: 2em;
+}
+
+.reveal[data-navigation-mode="linear"] .title-slide h1 {
+  font-size: 3em;
+  font-family: "Baloo 2", serif;
+  text-align: center;
+  font-weight: bold;
+  font-color: $black;
+  color: #fdf6e3;
+}
+
+// sizes
+.smallest {
+  font-size: 0.5em;
+}
+
+.smaller {
+  font-size: 0.6em;
+}
+.small {
+  font-size: 0.75em;
+}
+
+.medium {
+  font-size: 0.9em;
+}
+
+.larger {
+  font-size: 1.2em;
+}
+
+.large {
+  font-size: 1.5em;
+}
+
+.xlarge {
+  font-size: 1.8em;
+}
+
+.huge {
+  font-size: 2em;
+}
+
+// alignment
+
+.center-align {
+  text-align: center;
+}
+
+.reveal .white {
+  color: $white;
+}
+
+.reveal .hand {
+  font-family: "Little Days", cursive;
+}
+
+/* Apply styles to <a> elements with href attribute inside .reveal */
+.reveal a[href] {
+  text-decoration: none; /* Remove default underline */
+  background-image: linear-gradient(to right, lightgreen, limegreen);
+  background-position: 0 100%; /* Position at the bottom */
+  background-repeat: no-repeat; /* No repeat */
+  background-size: 100% 4px; /* Adjust thickness */
+  padding-bottom: 1px; /* Adds space for the underline */
+}
+
+/* Optional: Override styles for <a> elements with href inside .sourceCode */
+.sourceCode a[href] {
+  text-decoration: none; /* Example override */
+  background-image: none; /* Remove background image */
+  color: inherit; /* Inherit color */
+}
+
+.reveal blockquote {
+  box-shadow: none;
+  font-size: 0.75em;
+}
+
+.reveal code {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.2em;
+  border-radius: 8px;
+  padding: 1px 2px 1px 2px;
+  color: #4c4a4a;
+  background-color: #e6e0cf;
+}
+
+.reveal .slides section {
+  .fragment.highlight-orange,
+  .fragment.highlight-pastel {
+    opacity: 1;
+    visibility: inherit;
+  }
+
+  .fragment.highlight-pastel.visible {
+    background-color: $theme-pastel;
+    padding: 0px;
+    border-radius: 50px;
+  }
+
+  .fragment.highlight-orange.visible {
+    background-color: $theme-orange;
+    padding: 0px;
+    border-radius: 50px;
+  }
+}
+
+/* Emphasized text */
+.emphasize {
+  background-color: $theme-pastel; /* Highlight color */
+  padding: 2px; /* Optional padding for better spacing */
+  border-radius: 8px;
+  padding: 1px 1px 1px 1px;
+  font-weight: bold;
+}
+
+.reveal .slide figure > figcaption,
+.reveal .slide img.stretch + p.caption,
+.reveal .slide img.r-stretch + p.caption {
+  font-size: 0.6em;
+  font-weight: 300;
+  text-align: center;
+}
+
+.reveal .slide aside,
+.reveal .slide div.aside {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.6em;
+  color: #6f6f6f;
+}
+
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+/* Remove the link underline for the slide numbers, footer and home button */
+.reveal .footer a[href],
+.slide-number a[href],
+.slide-menu-button a[href] {
+  background-image: none;
+  color: #8f8f8f;
+  text-decoration: none;
+}
+
+/* Increase logo size while keeping aspect ratio */
+.reveal .slide-logo {
+  height: auto !important;
+  width: auto !important;
+  max-width: 200px !important;
+  max-height: 200px !important;
+}
+
+/* Date format on the title slide */
+.date {
+  color: #6f6f6f;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/* Italic subtitle on the title slide */
+#title-slide .subtitle,
+div.reveal div.slides section.quarto-title-block .subtitle {
+  font-style: italic;
+  font-weight: bolder;
+}
+
+/* Author on the title slide */
+.reveal .quarto-title-block .quarto-title-authors .quarto-title-author {
+  color: #6f6f6f;
+}
+
+/* Image on the top right corner */
+.reveal .top-right-img {
+  position: absolute;
+  top: -1em;
+  right: 1em;
+  width: 350px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+}

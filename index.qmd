@@ -290,6 +290,7 @@ This is a simple GeoJSON file defining 3 points that form a polygon.
 ::: {.column width=75%}
 
 ```{r}
+#| label: geojson-polygon
 #| message: false
 #| out-width: 50%
 #| crop: true
@@ -308,8 +309,8 @@ sf_point <- sf_polygon |>
 
 sf_polygon |>
   ggplot() +
-  geom_sf(linewidth = 3, color = "#3c3c3c") +
-  geom_sf(data = sf_point, size = 8, color = "red") +
+  geom_sf(linewidth = 3L, color = "#3c3c3c") +
+  geom_sf(data = sf_point, size = 8L, color = "red") +
   coord_sf()
 ```
 
@@ -326,7 +327,7 @@ Create your own GeoJSON file online at [https://geojson.io/](https://geojson.io/
 ## The GeoJSON format
 
 ```{r}
-#| label: geojson
+#| label: geojson-colosseum
 #| out-width: 75%
 #| crop: true
 #| dev: ragg_png
@@ -341,15 +342,15 @@ sf |>
   labs(
     title = str_wrap(
       "The Colosseum amphitheatre in the centre of the city of Rome",
-      30
+      30L
     )
   ) +
   coord_sf() +
   theme(
-    plot.title = element_text(size = 14, hjust = 0.5),
+    plot.title = element_text(size = 14L, hjust = 0.5),
     plot.title.position = "plot",
     panel.grid = element_blank(),
-    axis.text = element_text(size = 6),
+    axis.text = element_text(size = 6L),
   )
 ```
 
@@ -372,7 +373,7 @@ Often associated with satellite imagery.
 A GeoTIFF can contain information such as the Sea Surface Temperature (SST).
 
 ```{r}
-#| label: geotiff3
+#| label: sst-st-lawrence-map
 #| cache: false
 #| fig-format: png
 #| crop: true
@@ -424,25 +425,25 @@ ggplot() +
   geom_stars(data = r) +
   geom_sf(data = poly, fill = "red", color = NA) +
   scale_fill_viridis_c(
-    breaks = scales::breaks_pretty(n = 6),
+    breaks = scales::breaks_pretty(n = 6L),
     na.value = NA,
     guide = guide_colorbar(
       title.position = "top",
       title.hjust = 0.5,
-      title.theme = element_text(family = "Montserrat", size = 8),
-      label.theme = element_text(family = "Montserrat", size = 6),
-      barwidth = unit(4, "cm"),
+      title.theme = element_text(family = "Montserrat", size = 8L),
+      label.theme = element_text(family = "Montserrat", size = 6L),
+      barwidth = unit(4L, "cm"),
       barheight = unit(0.2, "cm")
     )
   ) +
   annotate(
     "text",
-    x = -71,
+    x = -71L,
     y = 46.5,
     label = "Quebec",
     family = "Montserrat",
     fontface = "bold",
-    size = 4
+    size = 4L
   ) +
   annotate(
     "text",
@@ -451,7 +452,7 @@ ggplot() +
     label = "Rimouski",
     family = "Montserrat",
     fontface = "bold",
-    size = 4,
+    size = 4L,
     hjust = -0.25
   ) +
   labs(
@@ -461,12 +462,12 @@ ggplot() +
     title = "SST in the St-Lawrence River (2020-01-20)"
   ) +
   theme(
-    legend.justification = c(0, 0),
+    legend.justification = c(0L, 0L),
     legend.position = c(0.02, 0.8),
     legend.direction = "horizontal",
     legend.background = element_blank(),
-    plot.title = element_text(size = 12),
-    plot.caption = element_text(size = 8)
+    plot.title = element_text(size = 12L),
+    plot.caption = element_text(size = 8L)
   )
 ```
 
@@ -475,7 +476,7 @@ ggplot() +
 A closer look allows us to better visualize the values (i.e., water temperature) within each pixel.
 
 ```{r}
-#| label: geotiff4
+#| label: sst-pixel-values
 #| cache: false
 #| fig-height: 3
 #| fig-format: png
@@ -483,7 +484,7 @@ A closer look allows us to better visualize the values (i.e., water temperature)
 #| fig-dpi: 300
 pixel_values <- r[poly] |>
   as_tibble() |>
-  rename(sst = 3)
+  rename(sst = 3L)
 
 ggplot() +
   geom_stars(data = r[poly], alpha = 0.75) +
@@ -494,13 +495,13 @@ ggplot() +
     aes(
       x = x,
       y = y,
-      label = round(sst, digits = 2)
+      label = round(sst, digits = 2L)
     ),
     fontface = "bold",
-    size = 3
+    size = 3L
   ) +
   scale_fill_viridis_c() +
-  scale_x_continuous(breaks = seq(-70, -65, by = 0.1)) +
+  scale_x_continuous(breaks = seq(-70L, -65L, by = 0.1)) +
   labs(
     x = NULL,
     y = NULL
@@ -520,6 +521,7 @@ It is usually a better idea to work with spatial objects (ex.: `GeoTIFF`) rather
 **Geographic data presented in a tabular form:**
 
 ```{r}
+#| label: sst-tabular-data
 #| echo: false
 pixel_values |>
   head() |>
@@ -529,13 +531,13 @@ pixel_values |>
   ) |>
   gt() |>
   tab_options(
-    table.width = pct(50),
-    table.font.size = 40,
+    table.width = pct(50L),
+    table.font.size = 40L,
     column_labels.font.weight = "cold"
   ) |>
   fmt_number(
     columns = "sst",
-    decimals = 2
+    decimals = 2L
   )
 ```
 
@@ -958,24 +960,24 @@ df <- df |>
   filter(element == "tmin")
 
 
-df$temperature[12] <- 123
+df$temperature[12L] <- 123L
 
 df_arrow <- tibble(
-  x = 110,
-  xend = 123,
-  y = 5,
+  x = 110L,
+  xend = 123L,
+  y = 5L,
   yend = 2.2,
   label = "Outlier?"
 )
 
 df |>
   ggplot(aes(x = temperature)) +
-  geom_histogram(binwidth = 5, color = "white") +
+  geom_histogram(binwidth = 5L, color = "white") +
   labs(
     title = "Histogram of air temperature",
     subtitle = str_wrap(
       "A histogram is an accurate representation of the distribution of numerical data. Here we can observe that there is an outlier in the data.",
-      90
+      90L
     )
   ) +
   geom_curve(
@@ -992,7 +994,7 @@ df |>
     hjust = 1.1,
     fontface = "bold",
     color = "#E60505FF",
-    size = 6
+    size = 6L
   ) +
   xlab("Temperature (°C)") +
   ylab("Count")
@@ -1192,26 +1194,27 @@ The data associated with the paper is available online with an associated DOI.
 ##
 
 ```{r}
+#| label: seanoe-downloads
 #| echo: false
-#| fig-width: 12
+#| fig-width: 14
 #| fig-height: 7
 #| fig-alt: "Bar plot showing the number of downloads per country for each dataset."
 url <- pins::board_url(
   list(
-    seanoe = "https://www.seanoe.org/html/stat/2022/uj4mfvvquq-philippemassicottetakuvikulavalca.xls"
+    seanoe = "https://www.seanoe.org/html/stat/2025/xzqksk6qr7-philippemassicottetakuvikulavalca.xls"
   )
 )
 
 df <- url |>
   pins::pin_download(name = "seanoe") |>
-  readxl::read_excel(skip = 2) |>
+  readxl::read_excel(skip = 2L) |>
   janitor::clean_names()
 
 df_viz <- df |>
   mutate(country = fct_na_value_to_level(country, level = "Unknown")) |>
-  mutate(country = fct_lump(country, n = 9)) |>
+  mutate(country = fct_lump(country, n = 9L)) |>
   count(dataset_title, country) |>
-  mutate(dataset_title = str_wrap(dataset_title, 55)) |>
+  mutate(dataset_title = str_wrap(dataset_title, 40L)) |>
   mutate(country2 = country) |>
   mutate(country = reorder_within(country, n, dataset_title))
 
@@ -1229,15 +1232,15 @@ df_viz |>
   theme(
     legend.position = "none",
     strip.background = element_blank(),
-    strip.text = element_text(size = 10, face = "bold", color = "white"),
-    axis.text = element_text(size = 10, face = "bold", color = "white"),
+    strip.text = element_text(size = 10L, face = "bold", color = "white"),
+    axis.text = element_text(size = 10L, face = "bold", color = "white"),
     text = element_text(color = "white"),
     panel.border = element_blank(),
     axis.ticks = element_blank(),
     panel.grid = element_blank(),
     panel.background = element_rect(fill = "#3c3c3c"),
     plot.background = element_rect(fill = "#3c3c3c"),
-    plot.title = element_text(size = 18, hjust = 0.5, color = "white")
+    plot.title = element_text(size = 18L, hjust = 0.5, color = "white")
   )
 ```
 

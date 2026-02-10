@@ -25,7 +25,9 @@ execute:
   echo: false
 
 citation:
+  type: speech
   url: https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025
+  language: fr-CA
 ---
 
 ```{r}

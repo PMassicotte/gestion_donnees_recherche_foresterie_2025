@@ -3,7 +3,7 @@ title: "Data Management Best Practices"
 subtitle: "TODO"
 author: "Philippe Massicotte"
 institute: "Laval University"
-date: "2025-03-111"
+date: "2025-03-11"
 date-format: long
 title-slide-attributes:
   data-background-size: 100% 100%
@@ -14,7 +14,7 @@ format:
       - title-slide.html
     fig-dpi: 300
     theme: style/slides.scss
-    footer: "[{{< fa house >}} https://pmassicotte.github.io/todo](https://pmassicotte.github.io/todo)"
+    footer: "[{{< fa house >}} https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025](https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025)"
     height: 1080
     width: 1920
     slide-number: c/t
@@ -25,7 +25,7 @@ execute:
   echo: false
 
 citation:
-  url: https://pmassicotte.github.io/journee_ppr_ulaval_2024
+  url: https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025
 ---
 
 ```{r}

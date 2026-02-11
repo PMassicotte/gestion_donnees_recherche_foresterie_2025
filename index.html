@@ -98,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-d38d7297f98843fac4dc149d22086b3d.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-cf678223ab88cfa682f5116065c25893.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -204,11 +204,14 @@
     <style>
       .image-container {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
       }
 
       .image-container img {
-        margin: 0 20px;
+        display: block;
+        margin: 10px;
       }
     </style>
   
@@ -218,11 +221,11 @@
             <p class="subtitle">TODO</p>
              <p class="author">Philippe Massicotte</p>
               <p class="date">March 11, 2025</p>
-            <br>
-      <div class="logo-title">
+      
+      <div style="margin-top: 40px" class="logo-title">
         <div class="image-container">
-          <img src="img/ulaval.png" height="200px" alt="Laval University logo">
-          <img src="img/takuvik.png" height="180" alt="Takuvik logo">
+          <img src="img/logo/tca/tca_wordmark_FR-colour.png" height="100" alt="Transformer l'action pour le climat logo">
+          <img src="img/logo/tca/tca_partnerinstitutions_horizontal-colour.png" height="100" alt="TCA partner institutions logos">
         </div>
       </div>
     </section>
@@ -254,6 +257,7 @@
 </ul></li>
 <li class="fragment"><p>Files and data organization.</p></li>
 <li class="fragment"><p>Tidying and formatting data.</p></li>
+<li class="fragment"><p>Documentation and metadata.</p></li>
 <li class="fragment"><p>Backups.</p></li>
 <li class="fragment"><p>Publishing your data.</p></li>
 </ul>
@@ -380,7 +384,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+<p><img data-src="index_files/figure-revealjs/geojson-polygon-1.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
 </figure>
 </div>
 </div>
@@ -393,7 +397,7 @@
 <section id="the-geojson-format" class="slide level2">
 <h2>The GeoJSON format</h2>
 
-<img data-src="index_files/figure-revealjs/geojson-1.png" style="width:75.0%" alt="The outline of the Colosseum amphitheatre in Rome created using a geojson file." class="r-stretch quarto-figure-center"><p class="caption">Data: <a href="https://bit.ly/2pAjOAr">https://bit.ly/2pAjOAr</a></p></section>
+<img data-src="index_files/figure-revealjs/geojson-colosseum-1.png" style="width:75.0%" alt="The outline of the Colosseum amphitheatre in Rome created using a geojson file." class="r-stretch quarto-figure-center"><p class="caption">Data: <a href="https://bit.ly/2pAjOAr">https://bit.ly/2pAjOAr</a></p></section>
 <section id="the-geotiff-format" class="slide level2">
 <h2>The GeoTIFF format</h2>
 <p>Often associated with satellite imagery.</p>
@@ -409,12 +413,12 @@
 <h2>The GeoTIFF format (SST)</h2>
 <p>A GeoTIFF can contain information such as the Sea Surface Temperature (SST).</p>
 
-<img data-src="index_files/figure-revealjs/geotiff3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%" alt="Sea Surface Temperature (SST) in the St-Lawrence River."></section>
+<img data-src="index_files/figure-revealjs/sst-st-lawrence-map-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%" alt="Sea Surface Temperature (SST) in the St-Lawrence River."></section>
 <section id="the-geotiff-format-sst-1" class="slide level2">
 <h2>The GeoTIFF format (SST)</h2>
 <p>A closer look allows us to better visualize the values (i.e., water temperature) within each pixel.</p>
 
-<img data-src="index_files/figure-revealjs/geotiff4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
+<img data-src="index_files/figure-revealjs/sst-pixel-values-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
 <section id="a-note-on-geospatial-data" class="slide level2">
 <h2>A note on geospatial data</h2>
 <p>It is usually a better idea to work with spatial objects (ex.: <code>GeoTIFF</code>) rather than tabular data.</p>
@@ -423,23 +427,23 @@
 <p><strong>Geographic data presented in a tabular form:</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="uraybehkse" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uraybehkse table {
+<div id="rjfyuxpzjj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rjfyuxpzjj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uraybehkse thead, #uraybehkse tbody, #uraybehkse tfoot, #uraybehkse tr, #uraybehkse td, #uraybehkse th {
+#rjfyuxpzjj thead, #rjfyuxpzjj tbody, #rjfyuxpzjj tfoot, #rjfyuxpzjj tr, #rjfyuxpzjj td, #rjfyuxpzjj th {
   border-style: none;
 }
 
-#uraybehkse p {
+#rjfyuxpzjj p {
   margin: 0;
   padding: 0;
 }
 
-#uraybehkse .gt_table {
+#rjfyuxpzjj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -465,12 +469,12 @@
   border-left-color: #D3D3D3;
 }
 
-#uraybehkse .gt_caption {
+#rjfyuxpzjj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uraybehkse .gt_title {
+#rjfyuxpzjj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -482,7 +486,7 @@
   border-bottom-width: 0;
 }
 
-#uraybehkse .gt_subtitle {
+#rjfyuxpzjj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -494,7 +498,7 @@
   border-top-width: 0;
 }
 
-#uraybehkse .gt_heading {
+#rjfyuxpzjj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -506,13 +510,13 @@
   border-right-color: #D3D3D3;
 }
 
-#uraybehkse .gt_bottom_border {
+#rjfyuxpzjj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uraybehkse .gt_col_headings {
+#rjfyuxpzjj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -527,7 +531,7 @@
   border-right-color: #D3D3D3;
 }
 
-#uraybehkse .gt_col_heading {
+#rjfyuxpzjj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -547,7 +551,7 @@
   overflow-x: hidden;
 }
 
-#uraybehkse .gt_column_spanner_outer {
+#rjfyuxpzjj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -559,15 +563,15 @@
   padding-right: 4px;
 }
 
-#uraybehkse .gt_column_spanner_outer:first-child {
+#rjfyuxpzjj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uraybehkse .gt_column_spanner_outer:last-child {
+#rjfyuxpzjj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uraybehkse .gt_column_spanner {
+#rjfyuxpzjj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -579,11 +583,11 @@
   width: 100%;
 }
 
-#uraybehkse .gt_spanner_row {
+#rjfyuxpzjj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uraybehkse .gt_group_heading {
+#rjfyuxpzjj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -609,7 +613,7 @@
   text-align: left;
 }
 
-#uraybehkse .gt_empty_group_heading {
+#rjfyuxpzjj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -624,15 +628,15 @@
   vertical-align: middle;
 }
 
-#uraybehkse .gt_from_md > :first-child {
+#rjfyuxpzjj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uraybehkse .gt_from_md > :last-child {
+#rjfyuxpzjj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uraybehkse .gt_row {
+#rjfyuxpzjj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -651,7 +655,7 @@
   overflow-x: hidden;
 }
 
-#uraybehkse .gt_stub {
+#rjfyuxpzjj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -664,7 +668,7 @@
   padding-right: 5px;
 }
 
-#uraybehkse .gt_stub_row_group {
+#rjfyuxpzjj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -678,15 +682,15 @@
   vertical-align: top;
 }
 
-#uraybehkse .gt_row_group_first td {
+#rjfyuxpzjj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uraybehkse .gt_row_group_first th {
+#rjfyuxpzjj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uraybehkse .gt_summary_row {
+#rjfyuxpzjj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -696,16 +700,16 @@
   padding-right: 5px;
 }
 
-#uraybehkse .gt_first_summary_row {
+#rjfyuxpzjj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uraybehkse .gt_first_summary_row.thick {
+#rjfyuxpzjj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uraybehkse .gt_last_summary_row {
+#rjfyuxpzjj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -715,7 +719,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#uraybehkse .gt_grand_summary_row {
+#rjfyuxpzjj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -725,7 +729,7 @@
   padding-right: 5px;
 }
 
-#uraybehkse .gt_first_grand_summary_row {
+#rjfyuxpzjj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -735,7 +739,7 @@
   border-top-color: #D3D3D3;
 }
 
-#uraybehkse .gt_last_grand_summary_row_top {
+#rjfyuxpzjj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -745,11 +749,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#uraybehkse .gt_striped {
+#rjfyuxpzjj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uraybehkse .gt_table_body {
+#rjfyuxpzjj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -758,7 +762,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#uraybehkse .gt_footnotes {
+#rjfyuxpzjj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -772,7 +776,7 @@
   border-right-color: #D3D3D3;
 }
 
-#uraybehkse .gt_footnote {
+#rjfyuxpzjj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -781,7 +785,7 @@
   padding-right: 5px;
 }
 
-#uraybehkse .gt_sourcenotes {
+#rjfyuxpzjj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -795,7 +799,7 @@
   border-right-color: #D3D3D3;
 }
 
-#uraybehkse .gt_sourcenote {
+#rjfyuxpzjj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -803,72 +807,72 @@
   padding-right: 5px;
 }
 
-#uraybehkse .gt_left {
+#rjfyuxpzjj .gt_left {
   text-align: left;
 }
 
-#uraybehkse .gt_center {
+#rjfyuxpzjj .gt_center {
   text-align: center;
 }
 
-#uraybehkse .gt_right {
+#rjfyuxpzjj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uraybehkse .gt_font_normal {
+#rjfyuxpzjj .gt_font_normal {
   font-weight: normal;
 }
 
-#uraybehkse .gt_font_bold {
+#rjfyuxpzjj .gt_font_bold {
   font-weight: bold;
 }
 
-#uraybehkse .gt_font_italic {
+#rjfyuxpzjj .gt_font_italic {
   font-style: italic;
 }
 
-#uraybehkse .gt_super {
+#rjfyuxpzjj .gt_super {
   font-size: 65%;
 }
 
-#uraybehkse .gt_footnote_marks {
+#rjfyuxpzjj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uraybehkse .gt_asterisk {
+#rjfyuxpzjj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uraybehkse .gt_indent_1 {
+#rjfyuxpzjj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uraybehkse .gt_indent_2 {
+#rjfyuxpzjj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uraybehkse .gt_indent_3 {
+#rjfyuxpzjj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uraybehkse .gt_indent_4 {
+#rjfyuxpzjj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uraybehkse .gt_indent_5 {
+#rjfyuxpzjj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uraybehkse .katex-display {
+#rjfyuxpzjj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uraybehkse div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rjfyuxpzjj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -972,7 +976,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="img/screenshots/python_file_naming.png" alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."></p>
-<figcaption>Source: <a href="https://bit.ly/2M8cViI">https://bit.ly/2M8cViI</a></figcaption>
+<figcaption>Source: https://bit.ly/2M8cViI</figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1239,6 +1243,592 @@
 
 <img data-src="index_files/figure-revealjs/histogram-1.svg" class="quarto-figure quarto-figure-center r-stretch" alt="Histogram of air temperature. A histogram is an accurate representation of the distribution of numerical data. Here we can observe that there is an outlier in the data." width="3000"></section></section>
 <section>
+<section id="documentation-and-metadata" class="title-slide slide level1 center" data-background-color="#2C404A">
+<h1>Documentation and metadata</h1>
+<div class="center v-center-container">
+<p><i class="fa-solid fa-book fa-5x" aria-label="book"></i> <i class="fa-solid fa-file-lines fa-5x" aria-label="file-lines"></i></p>
+</div>
+</section>
+<section id="why-document-your-data" class="slide level2">
+<h2>Why document your data?</h2>
+<ul>
+<li class="fragment"><p>Data without documentation <span class="emphasize">loses its meaning over time</span>.</p></li>
+<li class="fragment"><p>Your future self (and your colleagues) will thank you.</p></li>
+<li class="fragment"><p>A common scenario: a student finishes their degree and <span class="emphasize">nobody can understand their data or scripts</span>.</p></li>
+<li class="fragment"><p>Good documentation makes your research <span class="emphasize">reproducible</span> and <span class="emphasize">reusable</span>.</p></li>
+</ul>
+</section>
+<section id="readme-files" class="slide level2">
+<h2>README files</h2>
+<p>A good project README should contain:</p>
+<ol type="1">
+<li class="fragment"><p><strong>Project description</strong>: objectives and context.</p></li>
+<li class="fragment"><p><strong>Directory structure</strong>: what is in each folder.</p></li>
+<li class="fragment"><p><strong>How to run the analysis</strong>: dependencies, execution order.</p></li>
+<li class="fragment"><p><strong>Contact information</strong>: who to ask questions to.</p></li>
+</ol>
+</section>
+<section id="readme-files-example" class="slide level2">
+<h2>README files — example</h2>
+<pre><code>project/
+├── README.md
+├── data/
+│   ├── raw/          # Original data (never modified)
+│   └── processed/    # Cleaned data ready for analysis
+├── scripts/
+│   ├── 01_clean.R
+│   ├── 02_analyze.R
+│   └── 03_figures.R
+└── results/
+    ├── figures/
+    └── tables/</code></pre>
+</section>
+<section id="data-dictionary-codebook" class="slide level2">
+<h2>Data dictionary (codebook)</h2>
+<p>For each data file, document:</p>
+<ul>
+<li class="fragment"><p><strong>Variable name</strong>: as it appears in the file.</p></li>
+<li class="fragment"><p><strong>Description</strong>: what does it represent?</p></li>
+<li class="fragment"><p><strong>Units</strong>: meters, kilograms, degrees Celsius, etc.</p></li>
+<li class="fragment"><p><strong>Type</strong>: numeric, categorical, date, etc.</p></li>
+<li class="fragment"><p><strong>Allowed values</strong>: range or list of valid values.</p></li>
+</ul>
+</section>
+<section id="data-dictionary-example" class="slide level2">
+<h2>Data dictionary — example</h2>
+<p>A data dictionary can be a simple <code>CSV</code> file or a table in your README.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="hdrtrxhnkd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hdrtrxhnkd table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hdrtrxhnkd thead, #hdrtrxhnkd tbody, #hdrtrxhnkd tfoot, #hdrtrxhnkd tr, #hdrtrxhnkd td, #hdrtrxhnkd th {
+  border-style: none;
+}
+
+#hdrtrxhnkd p {
+  margin: 0;
+  padding: 0;
+}
+
+#hdrtrxhnkd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 36px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hdrtrxhnkd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hdrtrxhnkd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hdrtrxhnkd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hdrtrxhnkd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hdrtrxhnkd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hdrtrxhnkd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hdrtrxhnkd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hdrtrxhnkd .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hdrtrxhnkd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hdrtrxhnkd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hdrtrxhnkd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hdrtrxhnkd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hdrtrxhnkd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hdrtrxhnkd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdrtrxhnkd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hdrtrxhnkd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hdrtrxhnkd .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hdrtrxhnkd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdrtrxhnkd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hdrtrxhnkd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdrtrxhnkd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hdrtrxhnkd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdrtrxhnkd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdrtrxhnkd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdrtrxhnkd .gt_left {
+  text-align: left;
+}
+
+#hdrtrxhnkd .gt_center {
+  text-align: center;
+}
+
+#hdrtrxhnkd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hdrtrxhnkd .gt_font_normal {
+  font-weight: normal;
+}
+
+#hdrtrxhnkd .gt_font_bold {
+  font-weight: bold;
+}
+
+#hdrtrxhnkd .gt_font_italic {
+  font-style: italic;
+}
+
+#hdrtrxhnkd .gt_super {
+  font-size: 65%;
+}
+
+#hdrtrxhnkd .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hdrtrxhnkd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hdrtrxhnkd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hdrtrxhnkd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hdrtrxhnkd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hdrtrxhnkd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hdrtrxhnkd .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hdrtrxhnkd .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hdrtrxhnkd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
+<th id="description" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Description</th>
+<th id="unit" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Unit</th>
+<th id="type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Type</th>
+<th id="allowed_values" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Allowed values</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">site_id</td>
+<td class="gt_row gt_left" headers="description">Unique site identifier</td>
+<td class="gt_row gt_left" headers="unit">—</td>
+<td class="gt_row gt_left" headers="type">text</td>
+<td class="gt_row gt_left" headers="allowed_values">S001, S002, ...</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">species</td>
+<td class="gt_row gt_left" headers="description">Tree species code</td>
+<td class="gt_row gt_left" headers="unit">—</td>
+<td class="gt_row gt_left" headers="type">categorical</td>
+<td class="gt_row gt_left" headers="allowed_values">PICEA_MAR, ABIES_BAL, ...</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">dbh</td>
+<td class="gt_row gt_left" headers="description">Diameter at breast height</td>
+<td class="gt_row gt_left" headers="unit">cm</td>
+<td class="gt_row gt_left" headers="type">numeric</td>
+<td class="gt_row gt_left" headers="allowed_values">0.1–150</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="variable">height</td>
+<td class="gt_row gt_left" headers="description">Total tree height</td>
+<td class="gt_row gt_left" headers="unit">m</td>
+<td class="gt_row gt_left" headers="type">numeric</td>
+<td class="gt_row gt_left" headers="allowed_values">0.5–50</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="variable">date_measured</td>
+<td class="gt_row gt_left" headers="description">Date of measurement</td>
+<td class="gt_row gt_left" headers="unit">—</td>
+<td class="gt_row gt_left" headers="type">date</td>
+<td class="gt_row gt_left" headers="allowed_values">YYYY-MM-DD</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="documenting-your-scripts" class="slide level2">
+<h2>Documenting your scripts</h2>
+<ul>
+<li class="fragment"><p>Add a <strong>header block</strong> at the top of each script:</p>
+<ul>
+<li class="fragment">Author, date, purpose.</li>
+</ul></li>
+<li class="fragment"><p>Comment the <span class="emphasize"><strong>why</strong></span>, not the <strong>what</strong>.</p></li>
+<li class="fragment"><p>Use <strong>meaningful variable names</strong>.</p></li>
+</ul>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Bad <span style="color: #E6352FFF;"><i class="fa-solid fa-times" aria-label="times"></i></span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Set x to 5</span></span>
+<span id="cb4-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb4-3"><a href=""></a>d <span class="ot">&lt;-</span> d[d<span class="sc">$</span>v <span class="sc">&gt;</span> x, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<p>Good <span style="color: #34A74BFF;"><i class="fa-solid fa-check" aria-label="check"></i></span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Trees below 5 cm DBH are likely</span></span>
+<span id="cb5-2"><a href=""></a><span class="co"># measurement errors (see protocol v2)</span></span>
+<span id="cb5-3"><a href=""></a>min_dbh_cm <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb5-4"><a href=""></a>trees <span class="ot">&lt;-</span> trees[trees<span class="sc">$</span>dbh <span class="sc">&gt;</span> min_dbh_cm, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+</div>
+</section></section>
+<section>
 <section id="backups" class="title-slide slide level1 center" data-background-color="#2C404A">
 <h1>Backups</h1>
 
@@ -1445,7 +2035,7 @@
 <section id="section" class="slide level2">
 <h2></h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.svg" class="quarto-figure quarto-figure-center r-stretch" alt="Bar plot showing the number of downloads per country for each dataset." width="3600"></section>
+<img data-src="index_files/figure-revealjs/seanoe-downloads-1.svg" class="quarto-figure quarto-figure-center r-stretch" alt="Bar plot showing the number of downloads per country for each dataset." width="4200"></section>
 <section id="open-data-repositories" class="slide level2">
 <h2>Open data repositories</h2>
 <ul>
@@ -1473,6 +2063,7 @@
 <li class="fragment"><p>Choose non-proprietary file formats (ex.: <code>CSV</code>).</p></li>
 <li class="fragment"><p>Give your files and variables meaningful names.</p></li>
 <li class="fragment"><p>Tidy and visually explore your data to remove obvious errors.</p></li>
+<li class="fragment"><p>Document your data and scripts (README, data dictionary).</p></li>
 <li class="fragment"><p><span class="emphasize">Backups your data externally as often as possible.</span></p>
 <ul>
 <li class="fragment">Your hard drive will eventually crash, for sure!</li>

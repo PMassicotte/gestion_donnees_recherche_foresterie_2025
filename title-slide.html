@@ -1,17 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title Slide</title>
     <style>
       .image-container {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
       }
 
       .image-container img {
-        margin: 0 20px;
+        display: block;
+        margin: 10px;
       }
     </style>
   </head>
@@ -27,15 +30,19 @@
       $endfor$ $if(date)$
       <p class="date">$date$</p>
       $endif$
-      <br>
-      <div class="logo-title">
+
+      <div style="margin-top: 40px;" class="logo-title">
         <div class="image-container">
           <img
-            src="img/ulaval.png"
-            height="200px"
-            alt="Laval University logo"
-          >
-          <img src="img/takuvik.png" height="180" alt="Takuvik logo">
+            src="img/logo/tca/tca_wordmark_FR-colour.png"
+            height="100"
+            alt="Transformer l'action pour le climat logo"
+          />
+          <img
+            src="img/logo/tca/tca_partnerinstitutions_horizontal-colour.png"
+            height="100"
+            alt="TCA partner institutions logos"
+          />
         </div>
       </div>
     </section>

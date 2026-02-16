@@ -264,6 +264,11 @@ div.reveal div.slides section.quarto-title-block .subtitle {
   color: #6f6f6f;
 }
 
+/* Add vertical space between paragraphs */
+.spaced p {
+  margin-bottom: 1.2em;
+}
+
 /* Image on the top right corner */
 .reveal .top-right-img {
   position: absolute;

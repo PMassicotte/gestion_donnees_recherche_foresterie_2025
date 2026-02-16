@@ -1,6 +1,6 @@
 ---
 title: "Data Management Best Practices"
-subtitle: "TODO"
+subtitle: "Making your data projects more reproducible, reusable and open"
 author: "Philippe Massicotte"
 institute: "Laval University"
 date: "2025-03-11"
@@ -23,6 +23,7 @@ format:
 
 execute:
   echo: false
+  cache: true
 
 citation:
   type: speech
@@ -33,11 +34,11 @@ citation:
 ```{r}
 #| label: setup
 #| include: false
+#| cache: false
 knitr::opts_chunk$set(
   echo = FALSE,
   dev = "svg",
   message = FALSE,
-  cache = FALSE,
   warning = FALSE,
   fig.align = "center",
   fig.height = 4L
@@ -66,15 +67,14 @@ theme_update(
 )
 ```
 
-::: {.center-align}
+:::: {.columns}
 
-![](img/myname.png){width=600 fig-alt="Badge showing the name of the presenter (Philippe Massicotte)."}
+::: {.column width=50%}
 
+![](./img/logo/terminal_phil.png){fig-alt="Badge showing the name of the presenter (Philippe Massicotte)."}
 :::
 
-**Research assistant at Takuvik (Laval University)**
-
-Remote sensing, modeling, data science, data visualization, programming
+::: {.column width=50% .spaced}
 
 {{< fa brands github >}} https://github.com/PMassicotte
 
@@ -86,9 +86,13 @@ Remote sensing, modeling, data science, data visualization, programming
 
 {{< fa blog >}} www.pmassicotte.com
 
+:::
+
+::::
+
 ::: aside
 
-Unless otherwise stated, all images in this presentation are from [Microsoft Image Creator](https://www.bing.com/images/create).
+Unless otherwise stated, all images in this presentation are AI generated.
 
 :::
 
@@ -100,9 +104,13 @@ Unless otherwise stated, all images in this presentation are from [Microsoft Ima
   - Tabular data.
   - Geographical data.
 
-- Files and data organization.
+- File naming.
+
+- Project organization and raw data management.
 
 - Tidying and formatting data.
+
+- Variable names.
 
 - Documentation and metadata.
 
@@ -353,7 +361,7 @@ sf |>
     plot.title = element_text(size = 14L, hjust = 0.5),
     plot.title.position = "plot",
     panel.grid = element_blank(),
-    axis.text = element_text(size = 6L),
+    axis.text = element_text(size = 6L)
   )
 ```
 
@@ -367,7 +375,7 @@ Often associated with satellite imagery.
 
 ::: {.center-align}
 
-![](img/ai/geotiff.jpeg){width=600 fig-alt="AI generated image of a computer screen showing some sci-fi images."}
+![](img/ai/geotiff.png){height=600 fig-alt="AI generated image of a computer screen showing some sci-fi images."}
 
 :::
 
@@ -377,7 +385,6 @@ A GeoTIFF can contain information such as the Sea Surface Temperature (SST).
 
 ```{r}
 #| label: sst-st-lawrence-map
-#| cache: false
 #| fig-format: png
 #| crop: true
 #| fig-dpi: 300
@@ -480,7 +487,6 @@ A closer look allows us to better visualize the values (i.e., water temperature)
 
 ```{r}
 #| label: sst-pixel-values
-#| cache: false
 #| fig-height: 3
 #| fig-format: png
 #| crop: true
@@ -564,7 +570,7 @@ pixel_values |>
 
 ::::
 
-# File naming and project organization {background-color="#2C404A"}
+# File naming {background-color="#2C404A"}
 
 ::: {.center-align}
 
@@ -688,7 +694,7 @@ _Imagine that you have to create a file containing temperature data from a weath
 
 ::: {.center-align}
 
-![](https://media.giphy.com/media/3oxRmGXbquXKz6DNPq/giphy.gif){width=600}
+![AI generated image of a scientist looking at a computer screen with data on it.](./img/ai/working_with_other_data.png){height=600 fig-alt="AI generated image of a scientist looking at a computer screen with data on it."}
 
 :::
 
@@ -744,11 +750,31 @@ If a script changes the content of a raw data file and [saves it in the same fil
 
 :::
 
+## Project directory structure
+
+[Each project directory should be self-contained and include all the necessary files to reproduce the analyses and results.]{.emphasize}
+
+You should be able to share the project directory with a colleague and they should be able to reproduce the analyses and results without having to ask you for additional information.
+
+A good project `README` should contain:
+
+::: {.incremental}
+
+1. **Project description**: objectives and context.
+
+2. **Directory structure**: what is in each folder.
+
+3. **How to run the analysis**: dependencies, execution order.
+
+4. **Contact information**: who to ask questions to.
+
+:::
+
 # Tidy data {background-color="#2C404A"}
 
 ::: {.center-align}
 
-![](img/ai/tidydata.jpeg){width=700 fig-alt="AI generated image of a book and pencils on a desk."}
+![](img/ai/tidydata.png){height=800 fig-alt="AI generated cartoon comparing messy data versus tidy data. On the left, a frustrated scientist surrounded by chaotic papers labeled 'A total nightmare'. On the right, a happy scientist with an organized spreadsheet labeled 'Pure bliss' with checkmarks for clean, organized, and easy to analyze."}
 
 :::
 
@@ -812,7 +838,7 @@ If you use a spreadsheet program, [keep your data arranged as rectangular tables
 
 ::: {.center-align}
 
-![](img/ai/spreadsheet.jpeg){width=800 fig-alt="AI generated image of a piece of paper showing a spreadsheet."}
+![](img/ai/spreadsheet.png){height=800 fig-alt="AI generated image of a piece of paper showing a spreadsheet."}
 
 :::
 
@@ -1025,39 +1051,6 @@ df |>
 
 :::
 
-## README files
-
-A good project README should contain:
-
-::: {.incremental}
-
-1. **Project description**: objectives and context.
-
-2. **Directory structure**: what is in each folder.
-
-3. **How to run the analysis**: dependencies, execution order.
-
-4. **Contact information**: who to ask questions to.
-
-:::
-
-## README files — example
-
-```
-project/
-├── README.md
-├── data/
-│   ├── raw/          # Original data (never modified)
-│   └── processed/    # Cleaned data ready for analysis
-├── scripts/
-│   ├── 01_clean.R
-│   ├── 02_analyze.R
-│   └── 03_figures.R
-└── results/
-    ├── figures/
-    └── tables/
-```
-
 ## Data dictionary (codebook)
 
 For each data file, document:
@@ -1156,7 +1149,7 @@ trees <- trees[trees$dbh > min_dbh_cm, ]
 
 ::: {.center-align}
 
-![](img/ai/hd_fail.jpeg){width=800 fig-alt="AI generated image of a hard drive failing with a person crying because of losing data."}
+![](img/ai/hd_fail.png){height=800 fig-alt="AI generated image of a hard drive failing with a person crying because of losing data."}
 
 :::
 

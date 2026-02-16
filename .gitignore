@@ -6,3 +6,4 @@ flake.lock
 **/*.quarto_ipynb
 /_site
 /index.html
+/index_cache/revealjs

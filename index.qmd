@@ -104,9 +104,13 @@ Unless otherwise stated, all images in this presentation are AI generated.
   - Tabular data.
   - Geographical data.
 
-- Files and data organization.
+- File naming.
+
+- Project organization and raw data management.
 
 - Tidying and formatting data.
+
+- Variable names.
 
 - Documentation and metadata.
 
@@ -566,7 +570,7 @@ pixel_values |>
 
 ::::
 
-# File naming and project organization {background-color="#2C404A"}
+# File naming {background-color="#2C404A"}
 
 ::: {.center-align}
 
@@ -750,13 +754,21 @@ If a script changes the content of a raw data file and [saves it in the same fil
 
 [Each project directory should be self-contained and include all the necessary files to reproduce the analyses and results.]{.emphasize}
 
-- Raw data files.
-- Cleaned data files.
-- Code scripts.
-- A `README` file with an overview of the project and instructions for use:
-  - Documentation and metadata.
-  - If external data is used, make sure to properly cite it and provide links to the original sources.
-  - Your colleagues should be able to get all the data they need to reproduce your analyses and results.
+You should be able to share the project directory with a colleague and they should be able to reproduce the analyses and results without having to ask you for additional information.
+
+A good project `README` should contain:
+
+::: {.incremental}
+
+1. **Project description**: objectives and context.
+
+2. **Directory structure**: what is in each folder.
+
+3. **How to run the analysis**: dependencies, execution order.
+
+4. **Contact information**: who to ask questions to.
+
+:::
 
 # Tidy data {background-color="#2C404A"}
 
@@ -1038,39 +1050,6 @@ df |>
 - Good documentation makes your research [reproducible]{.emphasize} and [reusable]{.emphasize}.
 
 :::
-
-## README files
-
-A good project README should contain:
-
-::: {.incremental}
-
-1. **Project description**: objectives and context.
-
-2. **Directory structure**: what is in each folder.
-
-3. **How to run the analysis**: dependencies, execution order.
-
-4. **Contact information**: who to ask questions to.
-
-:::
-
-## README files — example
-
-```bash
-project/
-├── README.md
-├── data/
-│ ├── raw/   # Original data (never modified)
-│ └── clean/ # Cleaned data ready for analysis
-├── R/
-│ ├── 01_clean.R
-│ ├── 02_analyze.R
-│ └── 03_figures.R
-└── results/
-├── figures/
-└── tables/
-```
 
 ## Data dictionary (codebook)
 

@@ -716,6 +716,120 @@ A good project `README` should contain:
 
 :::
 
+# Documentation and metadata {background-color="#2C404A"}
+
+::: {.center .v-center-container}
+
+{{< fa book size=5x >}} {{< fa file-lines size=5x >}}
+
+:::
+
+## Why document your data?
+
+::: {.incremental}
+
+- Data without documentation [loses its meaning over time]{.emphasize}.
+
+- Your future self (and your colleagues) will thank you.
+
+- A common scenario: a student finishes their degree and [nobody can understand their data or scripts]{.emphasize}.
+
+- Good documentation makes your research [reproducible]{.emphasize} and [reusable]{.emphasize}.
+
+:::
+
+## Data dictionary (codebook)
+
+For each data file, document:
+
+::: {.incremental}
+
+- **Variable name**: as it appears in the file.
+
+- **Description**: what does it represent?
+
+- **Units**: meters, kilograms, degrees Celsius, etc.
+
+- **Type**: numeric, categorical, date, etc.
+
+- **Allowed values**: range or list of valid values.
+
+:::
+
+## Data dictionary — example
+
+A data dictionary can be a simple `CSV` file or a table in your README.
+
+```{r}
+#| label: data-dictionary-example
+#| echo: false
+tibble::tribble(
+  ~variable       , ~description                , ~unit , ~type         , ~allowed_values             ,
+  "site_id"       , "Unique site identifier"    , NA    , "text"        , "S001, S002, ..."           ,
+  "species"       , "Tree species code"         , NA    , "categorical" , "PICEA_MAR, ABIES_BAL, ..." ,
+  "dbh"           , "Diameter at breast height" , "cm"  , "numeric"     , "0.1–150"                   ,
+  "height"        , "Total tree height"         , "m"   , "numeric"     , "0.5–50"                    ,
+  "date_measured" , "Date of measurement"       , NA    , "date"        , "YYYY-MM-DD"
+) |>
+  gt() |>
+  cols_label(
+    variable = "Variable",
+    description = "Description",
+    unit = "Unit",
+    type = "Type",
+    allowed_values = "Allowed values"
+  ) |>
+  sub_missing(missing_text = "—") |>
+  tab_options(
+    table.font.size = 36L,
+    column_labels.font.weight = "bold"
+  )
+```
+
+## Documenting your scripts
+
+::: {.incremental}
+
+- Add a **header block** at the top of each script:
+  - Author, date, purpose.
+
+- Comment the [**why**]{.emphasize}, not the **what**.
+
+- Use **meaningful variable names**.
+
+:::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+Bad [{{< fa times >}}]{style="color: #E6352FFF;"}
+
+```r
+# Set x to 5
+x <- 5
+d <- d[d$v > x, ]
+```
+
+:::
+
+::: {.column width=50%}
+
+Good [{{< fa check >}}]{style="color: #34A74BFF;"}
+
+```r
+# Trees below 5 cm DBH are likely
+# measurement errors (see protocol v2)
+min_dbh_cm <- 5
+trees <- trees[trees$dbh > min_dbh_cm, ]
+```
+
+:::
+
+::::
+
 # Tidy data {background-color="#2C404A"}
 
 ::: {.center-align}
@@ -974,120 +1088,6 @@ df |>
   xlab("Temperature (°C)") +
   ylab("Count")
 ```
-
-# Documentation and metadata {background-color="#2C404A"}
-
-::: {.center .v-center-container}
-
-{{< fa book size=5x >}} {{< fa file-lines size=5x >}}
-
-:::
-
-## Why document your data?
-
-::: {.incremental}
-
-- Data without documentation [loses its meaning over time]{.emphasize}.
-
-- Your future self (and your colleagues) will thank you.
-
-- A common scenario: a student finishes their degree and [nobody can understand their data or scripts]{.emphasize}.
-
-- Good documentation makes your research [reproducible]{.emphasize} and [reusable]{.emphasize}.
-
-:::
-
-## Data dictionary (codebook)
-
-For each data file, document:
-
-::: {.incremental}
-
-- **Variable name**: as it appears in the file.
-
-- **Description**: what does it represent?
-
-- **Units**: meters, kilograms, degrees Celsius, etc.
-
-- **Type**: numeric, categorical, date, etc.
-
-- **Allowed values**: range or list of valid values.
-
-:::
-
-## Data dictionary — example
-
-A data dictionary can be a simple `CSV` file or a table in your README.
-
-```{r}
-#| label: data-dictionary-example
-#| echo: false
-tibble::tribble(
-  ~variable       , ~description                , ~unit , ~type         , ~allowed_values             ,
-  "site_id"       , "Unique site identifier"    , NA    , "text"        , "S001, S002, ..."           ,
-  "species"       , "Tree species code"         , NA    , "categorical" , "PICEA_MAR, ABIES_BAL, ..." ,
-  "dbh"           , "Diameter at breast height" , "cm"  , "numeric"     , "0.1–150"                   ,
-  "height"        , "Total tree height"         , "m"   , "numeric"     , "0.5–50"                    ,
-  "date_measured" , "Date of measurement"       , NA    , "date"        , "YYYY-MM-DD"
-) |>
-  gt() |>
-  cols_label(
-    variable = "Variable",
-    description = "Description",
-    unit = "Unit",
-    type = "Type",
-    allowed_values = "Allowed values"
-  ) |>
-  sub_missing(missing_text = "—") |>
-  tab_options(
-    table.font.size = 36L,
-    column_labels.font.weight = "bold"
-  )
-```
-
-## Documenting your scripts
-
-::: {.incremental}
-
-- Add a **header block** at the top of each script:
-  - Author, date, purpose.
-
-- Comment the [**why**]{.emphasize}, not the **what**.
-
-- Use **meaningful variable names**.
-
-:::
-
-. . .
-
-:::: {.columns}
-
-::: {.column width=50%}
-
-Bad [{{< fa times >}}]{style="color: #E6352FFF;"}
-
-```r
-# Set x to 5
-x <- 5
-d <- d[d$v > x, ]
-```
-
-:::
-
-::: {.column width=50%}
-
-Good [{{< fa check >}}]{style="color: #34A74BFF;"}
-
-```r
-# Trees below 5 cm DBH are likely
-# measurement errors (see protocol v2)
-min_dbh_cm <- 5
-trees <- trees[trees$dbh > min_dbh_cm, ]
-```
-
-:::
-
-::::
 
 # Backups {background-color="#2C404A"}
 

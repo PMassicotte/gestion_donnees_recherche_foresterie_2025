@@ -104,12 +104,12 @@ Unless otherwise stated, all images in this presentation are AI generated.
   - Tabular data.
   - Geographical data.
 
-- File and variable naming.
-
 - Data project good practices.
   - Raw data management.
   - Project organization.
   - Documentation and metadata.
+
+- File and variable naming.
 
 - Tidying and formatting data.
 
@@ -515,185 +515,6 @@ pixel_values |>
 
 ::::
 
-# File and variable naming {background-color="#2C404A"}
-
-::: {.center-align}
-
-{{< fa folder-open size=5x >}} {{< fa file-csv size=5x >}} {{< fa file-alt size=5x >}}
-
-:::
-
-## File naming: who can relate?
-
-::: {.center-align}
-
-![](img/excalidraw/files_naming.png){width=70% fig-alt="Laptop showing a file explorer with files badly named."}
-
-:::
-
-## File naming basic rules
-
-There are a few rules to adopt when naming files:
-
-- Do not use special characters: **~ ! @ # $ % ^ & \* ( ) ; < > ? , [ ] { } é è à**
-- No spaces.
-
-This will ensure that the files are recognized by most operating systems and software.
-
-- [{{< fa check >}}]{style="color: #34A74BFF;"} `meeting_notes_jan2023.docx`
-- [{{< fa times >}}]{style="color: #E6352FFF;"} `meeting notes(jan2023).docx`
-
-## File naming basic rules
-
-For sequential numbering, [use leading zeros to ensure files sort properly.]{.emphasize}
-
-- For example, use `0001`, `0002`, `1001` instead of `1`, `2`, `1001`.
-
-::: {.center-align}
-![](img/excalidraw/files_sorting.png){fig-alt="Image showing how files are sorted in a file explorer."}
-:::
-
-## When file naming goes wrong!
-
-:::: {.columns}
-
-::: {.column width=50%}
-
-![Source: https://bit.ly/2M8cViI](img/screenshots/python_file_naming.png){fig-alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."}
-
-:::
-
-::: {.column width=50%}
-
-> The glitch caused results of a common chemistry computation to vary depending on the operating system used, causing discrepancies among **Mac**, **Windows**, and **Linux** systems.
-
-> ...the glitch, had to do with how different operating systems sort files.
-
-:::
-
-::::
-
-## When file naming goes wrong!
-
-[Data files were sorted differently depending on the operating system where the Python scripts were executed.]{.emphasize}
-
-::: {.center-align}
-![](img/excalidraw/files_sorting2.png){width=50% fig-alt="Image showing how files are sorted in a file explorer on Windows and Linux."}
-
-:::
-
-::: aside
-
-Original image from Bhandari Neupane, J. et al. Characterization of Leptazolines A-D, Polar Oxazolines from the Cyanobacterium Leptolyngbya sp., Reveals a Glitch with the “Willoughby-Hoye” Scripts for Calculating NMR Chemical Shifts. Org. Lett. 21, 8449-8453 (2019).
-
-:::
-
-## File naming basic rules
-
-::: {.incremental}
-
-- Be consistent and descriptive when naming your files.
-
-- Separate parts of file names with `_` or `-` to add useful information about the data:
-  - Project name.
-
-  - The sampling locations.
-
-  - Type of data/variable.
-
-  - Date (YYYY-MM-DD).
-
-- [Always use the ISO 8601 format:]{.emphasize} [ YYYY ]{.larger}-[ MM ]{.medium}-[ DD ]{.small} (large [{{< fa arrow-right >}}]{style="color: #d5695d"} small).
-
-- [{{< fa times >}}]{style="color: #E6352FFF;"} 12-04-09 (2012-04-09 or 2004-12-09 or 2009-04-12, or ..., There are a total of 6 possible combinations.)
-
-- [{{< fa check >}}]{style="color: #34A74BFF;"} 2012-04-09 (2012 April 9th)
-
-:::
-
-## File naming basic rules (examples)
-
-_Imagine that you have to create a file containing temperature data from a weather station._
-
-::: {.incremental}
-
-- [{{< fa times >}}]{style="color: #E6352FFF;"} `data.csv` (not descriptive enough)
-
-- [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_1` (what is the meaning of **1** ?, no number padding!)
-
-- [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_20160708` (no file extension provided)
-
-- [{{< fa check >}}]{style="color: #34A74BFF;"} `station01_temperature_20160708.csv`
-
-:::
-
-. . .
-
-**Interesting resources:**
-
-[How to name files - Jennifer Bryan (YouTube)](https://www.youtube.com/watch?v=ES1LTlnpLMk)
-
-[How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel)
-
-## Variable names
-
-. . .
-
-[Be consistent with variable name capitalization:]{.emphasize}
-
-[{{< fa check >}}]{style="color: #34A74BFF;"} `temperature`, `precipitation`
-
-[{{< fa check >}}]{style="color: #34A74BFF;"} `Temperature`, `Precipitation`
-
-. . .
-
-[Avoid mixing name capitalization:]{.emphasize}
-
-[{{< fa times >}}]{style="color: #E6352FFF;"} `temperature`, `Precipitation`
-
-[{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_min`, `TemperatureMax`
-
-## Variable names
-
-::: {.incremental}
-
-- Provide information about abbreviations.
-  - `tmin` vs `temperature_minimum`
-
-- Explicitly state the unit of each variable:
-  - `depth_m`, `area_km2`, `distance_km`, `wind_speed_ms`
-
-- Be consistent with variable names across files:
-  - `temp` vs `temperature`
-  - `user_name` vs `username`
-  - `last_updated` vs `updated_at`
-
-:::
-
-## Variable names
-
-Do not use special characters or spaces (same as for file names).
-
-::: {.center-align}
-
-![](img/screenshots/invalid_multibyte_string.png){width=70% fig-alt="Screenshot showing an error message in R when trying to read a file with a special character."}
-
-:::
-
-. . .
-
-```{.r}
-r$> read_csv("myfile.csv")
-Rows: 104937 Columns: 1
-Error in nchar(x, "width") : invalid multibyte string, element 1
-```
-
-::: aside
-
-Note the cells with more than one value in the column. This is a common issue when data is not tidy.
-
-:::
-
 # Data project good practices {background-color="#2C404A"}
 
 ::: {.center-align}
@@ -881,6 +702,185 @@ trees <- trees[trees$dbh > min_dbh_cm, ]
 :::
 
 ::::
+
+# File and variable naming {background-color="#2C404A"}
+
+::: {.center-align}
+
+{{< fa folder-open size=5x >}} {{< fa file-csv size=5x >}} {{< fa file-alt size=5x >}}
+
+:::
+
+## File naming: who can relate?
+
+::: {.center-align}
+
+![](img/excalidraw/files_naming.png){width=70% fig-alt="Laptop showing a file explorer with files badly named."}
+
+:::
+
+## File naming basic rules
+
+There are a few rules to adopt when naming files:
+
+- Do not use special characters: **~ ! @ # $ % ^ & \* ( ) ; < > ? , [ ] { } é è à**
+- No spaces.
+
+This will ensure that the files are recognized by most operating systems and software.
+
+- [{{< fa check >}}]{style="color: #34A74BFF;"} `meeting_notes_jan2023.docx`
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `meeting notes(jan2023).docx`
+
+## File naming basic rules
+
+For sequential numbering, [use leading zeros to ensure files sort properly.]{.emphasize}
+
+- For example, use `0001`, `0002`, `1001` instead of `1`, `2`, `1001`.
+
+::: {.center-align}
+![](img/excalidraw/files_sorting.png){fig-alt="Image showing how files are sorted in a file explorer."}
+:::
+
+## When file naming goes wrong!
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+![Source: https://bit.ly/2M8cViI](img/screenshots/python_file_naming.png){fig-alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."}
+
+:::
+
+::: {.column width=50%}
+
+> The glitch caused results of a common chemistry computation to vary depending on the operating system used, causing discrepancies among **Mac**, **Windows**, and **Linux** systems.
+
+> ...the glitch, had to do with how different operating systems sort files.
+
+:::
+
+::::
+
+## When file naming goes wrong!
+
+[Data files were sorted differently depending on the operating system where the Python scripts were executed.]{.emphasize}
+
+::: {.center-align}
+![](img/excalidraw/files_sorting2.png){width=50% fig-alt="Image showing how files are sorted in a file explorer on Windows and Linux."}
+
+:::
+
+::: aside
+
+Original image from Bhandari Neupane, J. et al. Characterization of Leptazolines A-D, Polar Oxazolines from the Cyanobacterium Leptolyngbya sp., Reveals a Glitch with the “Willoughby-Hoye” Scripts for Calculating NMR Chemical Shifts. Org. Lett. 21, 8449-8453 (2019).
+
+:::
+
+## File naming basic rules
+
+::: {.incremental}
+
+- Be consistent and descriptive when naming your files.
+
+- Separate parts of file names with `_` or `-` to add useful information about the data:
+  - Project name.
+
+  - The sampling locations.
+
+  - Type of data/variable.
+
+  - Date (YYYY-MM-DD).
+
+- [Always use the ISO 8601 format:]{.emphasize} [ YYYY ]{.larger}-[ MM ]{.medium}-[ DD ]{.small} (large [{{< fa arrow-right >}}]{style="color: #d5695d"} small).
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} 12-04-09 (2012-04-09 or 2004-12-09 or 2009-04-12, or ..., There are a total of 6 possible combinations.)
+
+- [{{< fa check >}}]{style="color: #34A74BFF;"} 2012-04-09 (2012 April 9th)
+
+:::
+
+## File naming basic rules (examples)
+
+_Imagine that you have to create a file containing temperature data from a weather station._
+
+::: {.incremental}
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `data.csv` (not descriptive enough)
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_1` (what is the meaning of **1** ?, no number padding!)
+
+- [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_20160708` (no file extension provided)
+
+- [{{< fa check >}}]{style="color: #34A74BFF;"} `station01_temperature_20160708.csv`
+
+:::
+
+. . .
+
+**Interesting resources:**
+
+[How to name files - Jennifer Bryan (YouTube)](https://www.youtube.com/watch?v=ES1LTlnpLMk)
+
+[How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel)
+
+## Variable names
+
+. . .
+
+[Be consistent with variable name capitalization:]{.emphasize}
+
+[{{< fa check >}}]{style="color: #34A74BFF;"} `temperature`, `precipitation`
+
+[{{< fa check >}}]{style="color: #34A74BFF;"} `Temperature`, `Precipitation`
+
+. . .
+
+[Avoid mixing name capitalization:]{.emphasize}
+
+[{{< fa times >}}]{style="color: #E6352FFF;"} `temperature`, `Precipitation`
+
+[{{< fa times >}}]{style="color: #E6352FFF;"} `temperature_min`, `TemperatureMax`
+
+## Variable names
+
+::: {.incremental}
+
+- Provide information about abbreviations.
+  - `tmin` vs `temperature_minimum`
+
+- Explicitly state the unit of each variable:
+  - `depth_m`, `area_km2`, `distance_km`, `wind_speed_ms`
+
+- Be consistent with variable names across files:
+  - `temp` vs `temperature`
+  - `user_name` vs `username`
+  - `last_updated` vs `updated_at`
+
+:::
+
+## Variable names
+
+Do not use special characters or spaces (same as for file names).
+
+::: {.center-align}
+
+![](img/screenshots/invalid_multibyte_string.png){width=70% fig-alt="Screenshot showing an error message in R when trying to read a file with a special character."}
+
+:::
+
+. . .
+
+```{.r}
+r$> read_csv("myfile.csv")
+Rows: 104937 Columns: 1
+Error in nchar(x, "width") : invalid multibyte string, element 1
+```
+
+::: aside
+
+Note the cells with more than one value in the column. This is a common issue when data is not tidy.
+
+:::
 
 # Tidy data {background-color="#2C404A"}
 

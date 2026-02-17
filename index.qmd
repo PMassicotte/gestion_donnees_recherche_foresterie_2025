@@ -106,9 +106,10 @@ Unless otherwise stated, all images in this presentation are AI generated.
 
 - File naming.
 
-- Project organization and raw data management.
-
-- Documentation and metadata.
+- Data project good practices.
+  - Raw data management.
+  - Project organization.
+  - Documentation and metadata.
 
 - Tidying and formatting data.
 
@@ -636,7 +637,7 @@ _Imagine that you have to create a file containing temperature data from a weath
 
 [How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel)
 
-# Project organization and raw data management {background-color="#2C404A"}
+# Data project good practices {background-color="#2C404A"}
 
 ::: {.center-align}
 
@@ -716,15 +717,9 @@ A good project `README` should contain:
 
 :::
 
-# Documentation and metadata {background-color="#2C404A"}
+## Documentation and metadata
 
-::: {.center .v-center-container}
-
-{{< fa book size=5x >}} {{< fa file-lines size=5x >}}
-
-:::
-
-## Why document your data?
+Why document your data?
 
 ::: {.incremental}
 

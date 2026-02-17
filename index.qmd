@@ -143,60 +143,6 @@ The file format used to store data has important implications:
 
 :::
 
-## Old-school computing in laboratories
-
-:::: {.columns}
-
-::: {.column width=50%}
-
-Laboratory computer programs often use proprietary file formats.
-
-This likely means that:
-
-::: {.incremental}
-
-1. You are forced to buy a license [which can be expensive]{.emphasize}.
-
-2. You depend on the commitment of the company to support the file format in the future.
-
-:::
-
-:::
-
-::: {.column width=50%}
-
-![](img/ai/old_school_lab.jpeg){width=800 fig-alt="Old-school laboratory"}
-
-:::
-
-::::
-
-## When you depend on profit companies
-
-:::: {.columns}
-
-::: {.column width=50%}
-
-> At the Bodega Marine Laboratory at the University of California, Davis, some computers still run on **Microsoft Windows XP (released in 2001)**, because of the need to maintain compatibility with a scanning laser confocal microscope and other imaging equipment, says lab director Gary Cherr.
-
-> **To work with current Windows versions, the team would have to replace the whole microscope. The marginal potential gains aren’t yet worth the US\$400,000 expense**, Cherr reasons.
-
-:::
-
-::: {.column width=50%}
-
-![](img/ai/old_school_microscope.jpeg){width=600 fig-alt="Old-school microscope"}
-
-:::
-
-::::
-
-::: aside
-
-{{< fa newspaper >}} [Old-school computing: when your lab PC is ancient](https://www.nature.com/articles/d41586-021-01431-y)
-
-:::
-
 ## File formats
 
 Ideally, the chosen file format should have these characteristics:

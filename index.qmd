@@ -80,7 +80,7 @@ theme_update(
 
 {{< fa envelope >}} philippe.massicotte@takuvik.ulaval.ca
 
-{{< fa brands twitter >}} @philmassicotte
+{{< fa brands x-twitter >}} @philmassicotte
 
 {{< fa brands mastodon >}} https://fosstodon.org/@philmassicotte
 
@@ -108,11 +108,11 @@ Unless otherwise stated, all images in this presentation are AI generated.
 
 - Project organization and raw data management.
 
+- Documentation and metadata.
+
 - Tidying and formatting data.
 
 - Variable names.
-
-- Documentation and metadata.
 
 - Backups.
 
@@ -133,7 +133,7 @@ Unless otherwise stated, all images in this presentation are AI generated.
 The file format used to store data has important implications:
 
 - Allows to [re-open]{.emphasize} and [re-use]{.emphasize} your data in the future:
-  - Software's might not be cross-platform (Windows/Mac/Linux).
+  - Software might not be cross-platform (Windows/Mac/Linux).
 
   - Proprietary file formats can become obsolete or unsupported.
 
@@ -636,11 +636,11 @@ _Imagine that you have to create a file containing temperature data from a weath
 
 [How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel)
 
-# Working with data from other people {background-color="#2C404A"}
+# Project organization and raw data management {background-color="#2C404A"}
 
 ::: {.center-align}
 
-![AI generated image of a scientist looking at a computer screen with data on it.](./img/ai/working_with_other_data.png){height=600 fig-alt="AI generated image of a scientist looking at a computer screen with data on it."}
+![AI generated image of a scientist looking at a computer screen with data on it.](./img/ai/working_with_other_data.png){height=500 fig-alt="AI generated image of a scientist looking at a computer screen with data on it."}
 
 :::
 
@@ -868,7 +868,7 @@ The main idea is that data should be organized in columns with [each column repr
 
 ## How data is often structured
 
-- Many researchers structure their data in such a way that it is easily manipulated by a human, [but not so much programatically]{.emphasize}.
+- Many researchers structure their data in such a way that it is easily manipulated by a human, [but not so much programmatically]{.emphasize}.
 
 - A common problem is that the columns represent values, not variable names.
 
@@ -944,7 +944,7 @@ Do not be that person 😩😖😠😤😣🤦‍♀️🤦‍♂️😑😓
 
 . . .
 
-[Be consistent with variable name capitalizasion:]{.emphasize}
+[Be consistent with variable name capitalization:]{.emphasize}
 
 [{{< fa check >}}]{style="color: #34A74BFF;"} `temperature`, `precipitation`
 
@@ -1253,7 +1253,7 @@ Another way to publish data is to write a data paper.
 
 - Data papers are interesting alternatives to publish data:
   - [Peer-reviewed]{.emphasize} (high-quality data, in theory!).
-  - Generally open access (obliviously!).
+  - Generally open access (obviously!).
   - Data are citable with a DOI.
 
 > A data paper is a **peer-reviewed document** describing a dataset, published in a peer-reviewed journal. It takes effort to prepare, curate and describe data. Data papers provide recognition for this effort by means of a scholarly article.

@@ -668,7 +668,7 @@ tibble::tribble(
 - Add a **header block** at the top of each script:
   - Author, date, purpose.
 
-- Comment the [**why**]{.emphasize}, not the **what**.
+- Comment the [**why**]{.emphasize}, not the [**what**]{.emphasize}.
 
 - Use **meaningful variable names**.
 

@@ -579,11 +579,11 @@ If a script changes the content of a raw data file and [saves it in the same fil
 
 ## Project directory structure
 
-[Each project directory should be self-contained and include all the necessary files to reproduce the analyses and results.]{.emphasize}
+[Each project should be self-contained and include all the necessary files to reproduce the analyses and results.]{.emphasize}
 
-You should be able to share the project directory with a colleague and they should be able to reproduce the analyses and results without having to ask you for additional information.
+<br>
 
-A good project `README` should contain:
+Use a `README` file to provide an overview of the project and instructions on how to use the data and scripts. It can include:
 
 ::: {.incremental}
 
@@ -821,9 +821,9 @@ _Imagine that you have to create a file containing temperature data from a weath
 
 **Interesting resources:**
 
-[How to name files - Jennifer Bryan (YouTube)](https://www.youtube.com/watch?v=ES1LTlnpLMk)
+[How to name files - Jennifer Bryan (YouTube)](https://www.youtube.com/watch?v=ES1LTlnpLMk){target="\_blank"}
 
-[How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel)
+[How to name files - Jennifer Bryan (Slides)](https://speakerdeck.com/jennybc/how-to-name-files-the-sequel){target="\_blank"}
 
 ## Variable names
 
@@ -1289,8 +1289,13 @@ df <- url |>
 df_viz <- df |>
   mutate(country = fct_na_value_to_level(country, level = "Unknown")) |>
   mutate(country = fct_lump(country, n = 9L)) |>
-  count(dataset_title, country) |>
-  mutate(dataset_title = str_wrap(dataset_title, 40L)) |>
+  count(dataset_title, dataset_publication_year, country) |>
+  mutate(
+    dataset_title = str_wrap(
+      glue::glue("{dataset_title} ({dataset_publication_year})"),
+      40L
+    )
+  ) |>
   mutate(country2 = country) |>
   mutate(country = reorder_within(country, n, dataset_title))
 
@@ -1302,7 +1307,8 @@ df_viz |>
   labs(
     x = "Number of downloads",
     y = NULL,
-    title = glue::glue("Cumulative dataset downloads: {sum(df_viz$n)}")
+    title = glue::glue("Cumulative dataset downloads: {sum(df_viz$n)}"),
+    caption = "Cumulative downloads from year of publication through 2025"
   ) +
   facet_wrap(~dataset_title, scales = "free_y") +
   theme(
@@ -1316,23 +1322,24 @@ df_viz |>
     panel.grid = element_blank(),
     panel.background = element_rect(fill = "#3c3c3c"),
     plot.background = element_rect(fill = "#3c3c3c"),
-    plot.title = element_text(size = 18L, hjust = 0.5, color = "white")
+    plot.title = element_text(size = 18L, hjust = 0.5, color = "white"),
+    plot.caption = element_text(size = 8L, color = "white")
   )
 ```
 
 ## Open data repositories
 
-- Polar Data Catalogue [https://www.polardata.ca/](https://www.polardata.ca/)
-- Scholars Portal Dataverse [https://dataverse.scholarsportal.info/](https://dataverse.scholarsportal.info/)
-- Federated Research Data Repository [https://www.frdr-dfdr.ca/repo/?locale=fr](https://www.frdr-dfdr.ca/repo/?locale=fr)
-- Pangaea [https://www.pangaea.de/](https://www.pangaea.de/)
-- Dryad [https://datadryad.org](https://datadryad.org)
-- Catalogue de données ouverte OGSL [https://ogsl.ca/fr/](https://ogsl.ca/fr/)
-- Zenodo [https://zenodo.org/](https://zenodo.org/)
-- Figshare [https://figshare.com/](https://figshare.com/)
-- Seanoe [https://www.seanoe.org/](https://www.seanoe.org/)
-- NFS Arctic Data Center [https://arcticdata.io/](https://arcticdata.io/)
-- The Dataverse Project [https://dataverse.org/](https://dataverse.org/)
+- Polar Data Catalogue [https://www.polardata.ca/](https://www.polardata.ca/){target="\_blank"}
+- Scholars Portal Dataverse [https://dataverse.scholarsportal.info/](https://dataverse.scholarsportal.info/){target="\_blank"}
+- Federated Research Data Repository [https://www.frdr-dfdr.ca/repo/?locale=fr](https://www.frdr-dfdr.ca/repo/?locale=fr){target="\_blank"}
+- Pangaea [https://www.pangaea.de/](https://www.pangaea.de/){target="\_blank"}
+- Dryad [https://datadryad.org](https://datadryad.org){target="\_blank"}
+- Catalogue de données ouverte OGSL [https://ogsl.ca/fr/](https://ogsl.ca/fr/){target="\_blank"}
+- Zenodo [https://zenodo.org/](https://zenodo.org/){target="\_blank"}
+- Figshare [https://figshare.com/](https://figshare.com/){target="\_blank"}
+- Seanoe [https://www.seanoe.org/](https://www.seanoe.org/){target="\_blank"}
+- NFS Arctic Data Center [https://arcticdata.io/](https://arcticdata.io/){target="\_blank"}
+- The Dataverse Project [https://dataverse.org/](https://dataverse.org/){target="\_blank"}
 
 # Take home messages {background-color="#2C404A"}
 

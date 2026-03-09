@@ -597,6 +597,41 @@ Use a `README` file to provide an overview of the project and instructions on ho
 
 :::
 
+## README file example
+
+```{=html}
+<div style="border: 1px solid #d0d7de; border-radius: 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 22px; width: 100%; height: 80vh; display: flex; flex-direction: column; box-sizing: border-box; background-color: #ffffff;">
+  <div style="background: #f6f8fa; padding: 12px 24px; border-bottom: 1px solid #d0d7de; border-radius: 6px 6px 0 0; color: #57606a; display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+    📄 <strong>README.md</strong>
+  </div>
+  <div style="padding: 24px 40px; line-height: 1.6; flex: 1; display: flex; flex-direction: column; justify-content: space-evenly;">
+    <h1 style="font-size: 1.4em; border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin: 0;">Forest Inventory 2024</h1>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">Project description</h2>
+      <p style="margin: 0;">Inventory of tree species and diameter at breast height (DBH) in the Montmorency Forest, collected in summer 2024.</p>
+    </div>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">Directory structure</h2>
+      <pre style="background: #f6f8fa; padding: 12px 18px; border-radius: 6px; font-size: 18px; line-height: 1.6; margin: 0;">project/
+├── data/
+│   ├── raw/          # Raw field data (do not modify)
+│   └── processed/    # Cleaned datasets
+├── scripts/          # R analysis scripts
+├── results/          # Figures and tables
+└── README.md</pre>
+    </div>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">How to run</h2>
+      <p style="margin: 0;">Run scripts in order: <code style="background:#f6f8fa; padding: 2px 6px; border-radius: 4px;">01_clean.R</code> → <code style="background:#f6f8fa; padding: 2px 6px; border-radius: 4px;">02_analysis.R</code> → <code style="background:#f6f8fa; padding: 2px 6px; border-radius: 4px;">03_figures.R</code></p>
+    </div>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">Contact</h2>
+      <p style="margin: 0;">Jane Doe — <a href="mailto:jane.doe@ulaval.ca" style="color: #0969da;">jane.doe@ulaval.ca</a></p>
+    </div>
+  </div>
+</div>
+```
+
 ## Documentation and metadata
 
 Why document your data?

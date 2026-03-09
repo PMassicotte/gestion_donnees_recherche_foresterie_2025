@@ -104,9 +104,8 @@ Unless otherwise stated, all images in this presentation are AI generated.
   - Tabular data.
   - Geographical data.
 
-- Data project good practices.
+- Data project organization and good practices.
   - Raw data management.
-  - Project organization.
   - Documentation and metadata.
 
 - File and variable naming.
@@ -200,12 +199,12 @@ This dataset contains 4 variables (columns). [The first line generally includes 
 ::::
 
 ::: aside
-Data source: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. [https://allisonhorst.github.io/palmerpenguins/](https://allisonhorst.github.io/palmerpenguins/) Artwork by @allison_horst.
+Data source: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. [https://allisonhorst.github.io/palmerpenguins/](https://allisonhorst.github.io/palmerpenguins/){target="\_blank"} Artwork by @allison_horst.
 :::
 
 ## Common open-source geographic file formats
 
-These files contain information on geographic features such as [points, lines or polygons]{.emphasize}. There are a ton of [geographical file formats](https://gisgeography.com/gis-formats/), but here are some that are particularly popular.
+These files contain information on geographic features such as [points, lines or polygons]{.emphasize}. There are a ton of [geographical file formats](https://gisgeography.com/gis-formats/){target="\_blank"}, but here are some that are particularly popular.
 
 ::: {.incremental}
 
@@ -216,7 +215,7 @@ These files contain information on geographic features such as [points, lines or
 
 - GeoTIFF (`.tif`, `.tiff`, TIFF variant enriched with GIS relevant metadata)
 
-- GeoParquet (`.parquet`) is an [Open Geospatial Consortium (OGC) standard](https://geoparquet.org/) standard that adds interoperable geospatial types (Point, Line, Polygon) to [Apache Parquet](https://parquet.apache.org/).
+- GeoParquet (`.parquet`) is an [Open Geospatial Consortium (OGC) standard](https://geoparquet.org/){target="\_blank"} standard that adds interoperable geospatial types (Point, Line, Polygon) to [Apache Parquet](https://parquet.apache.org/){target="\_blank"}.
 
 :::
 
@@ -276,7 +275,7 @@ sf_polygon |>
 
 ::: {.aside}
 
-Create your own GeoJSON file online at [https://geojson.io/](https://geojson.io/)
+Create your own GeoJSON file online at [https://geojson.io/](https://geojson.io/){target="\_blank"}
 
 :::
 
@@ -317,7 +316,7 @@ Often associated with satellite imagery.
 
 > GeoTIFF is a public domain metadata standard that allows [georeferencing information to be embedded within a TIFF file.]{.emphasize} The potential additional information includes map projection, coordinate systems, ellipsoids, datums, and everything else necessary to establish the exact spatial reference for the file.
 >
-> [Wikipedia](https://en.wikipedia.org/wiki/GeoTIFF)
+> [Wikipedia](https://en.wikipedia.org/wiki/GeoTIFF){target="\_blank"}
 
 ::: {.center-align}
 
@@ -468,7 +467,7 @@ ggplot() +
 
 ## A note on geospatial data
 
-It is usually a better idea to work with spatial objects (ex.: `GeoTIFF`) rather than tabular data.
+It is usually a better idea to work with spatial objects (ex.: `GeoTIFF`, or `geoparquet`) rather than tabular data.
 
 :::: {.columns}
 
@@ -541,25 +540,14 @@ Basic recommendations to preserve the raw data for future use:
 
 . . .
 
-[Source: [Preserve information: Keep raw data raw](https://dataoneorg.github.io/Education/bestpractices/preserve-information-keep)]{.small}
-
-## Preserve information: keep your raw data raw
-
-If a script changes the content of a raw data file and [saves it in the same file, likely, the script will not work the second time because the structure of the file has changed]{.emphasize}.
-
-. . .
-
-::: {.center-align}
-
-![](img/excalidraw/keep_raw_data_raw_01.png){width=80% fig-alt="Image showing that data can change after the data is cleaned. The column name is separated into two columns firstname and lastname."}
-
-:::
+[Source: [Preserve information: Keep raw data raw](https://dataoneorg.github.io/Education/bestpractices/preserve-information-keep){target="\_blank"}]{.small}
 
 ## Project directory structure
 
 ::: {.incremental}
 
 - Choosing a logical and consistent way to organize your data files makes it easier for you and your colleagues to find and use your data.
+  - [Each project should be self-contained and include all the necessary files to reproduce the analyses and results.]{.emphasize}
 
 - Consider using a specific folder to store raw data files.
 
@@ -577,25 +565,36 @@ If a script changes the content of a raw data file and [saves it in the same fil
 
 :::
 
-## Project directory structure
+## Documentation and metadata
 
-[Each project should be self-contained and include all the necessary files to reproduce the analyses and results.]{.emphasize}
-
-<br>
-
-Use a `README` file to provide an overview of the project and instructions on how to use the data and scripts. It can include:
+Why bother documenting your data?
 
 ::: {.incremental}
 
-1. **Project description**: objectives and context.
+- Good documentation helps making your research [reproducible]{.emphasize} and [reusable]{.emphasize}.
 
-2. **Directory structure**: what is in each folder.
+- Data without documentation [loses its meaning over time]{.emphasize}.
 
-3. **How to run the analysis**: dependencies, execution order.
-
-4. **Contact information**: who to ask questions to.
+- A common scenario: a student finishes their degree and [nobody can understand their data or scripts]{.emphasize}.
 
 :::
+
+## Documentation and metadata
+
+- Use a `README` file to provide an overview of the project and instructions on how to use the data and scripts.
+
+- It can include:
+
+  ::: {.incremental}
+  1. **Project description**: objectives and context.
+
+  2. **Directory structure**: what is in each folder.
+
+  3. **How to run the analysis**: dependencies, execution order.
+
+  4. **Contact information**: who to ask questions to.
+
+  :::
 
 ## README file example
 
@@ -632,84 +631,44 @@ Use a `README` file to provide an overview of the project and instructions on ho
 </div>
 ```
 
-## Documentation and metadata
+## Documenting your code
 
-Why document your data?
+Add a **header block** at the top of each script/function:
 
-::: {.incremental}
+```r {style="font-size: 1em;"}
+#' Convert Coordinates
+#'
+#' This function converts coordinates from degrees and minutes to decimal
+#' degrees.
+#'
+#' @param coords A character vector of coordinates in the format "degrees
+#' minutes".
+#'
+#' @return A character vector of coordinates in decimal degrees.
+convert_coords <- function(coords) {
+  parts <- str_split_fixed(coords, " ", 2L)
 
-- Data without documentation [loses its meaning over time]{.emphasize}.
+  degrees <- parse_number(parts[, 1L])
+  minutes <- parse_number(parts[, 2L])
 
-- Your future self (and your colleagues) will thank you.
+  decimal_degrees <- degrees + (minutes / 60L)
 
-- A common scenario: a student finishes their degree and [nobody can understand their data or scripts]{.emphasize}.
-
-- Good documentation makes your research [reproducible]{.emphasize} and [reusable]{.emphasize}.
-
-:::
-
-## Data dictionary (codebook)
-
-For each data file, document:
-
-::: {.incremental}
-
-- **Variable name**: as it appears in the file.
-
-- **Description**: what does it represent?
-
-- **Units**: meters, kilograms, degrees Celsius, etc.
-
-- **Type**: numeric, categorical, date, etc.
-
-- **Allowed values**: range or list of valid values.
-
-:::
-
-## Data dictionary — example
-
-A data dictionary can be a simple `CSV` file or a table in your README.
-
-```{r}
-#| label: data-dictionary-example
-#| echo: false
-tibble::tribble(
-  ~variable       , ~description                , ~unit , ~type         , ~allowed_values             ,
-  "site_id"       , "Unique site identifier"    , NA    , "text"        , "S001, S002, ..."           ,
-  "species"       , "Tree species code"         , NA    , "categorical" , "PICEA_MAR, ABIES_BAL, ..." ,
-  "dbh"           , "Diameter at breast height" , "cm"  , "numeric"     , "0.1–150"                   ,
-  "height"        , "Total tree height"         , "m"   , "numeric"     , "0.5–50"                    ,
-  "date_measured" , "Date of measurement"       , NA    , "date"        , "YYYY-MM-DD"
-) |>
-  gt() |>
-  cols_label(
-    variable = "Variable",
-    description = "Description",
-    unit = "Unit",
-    type = "Type",
-    allowed_values = "Allowed values"
-  ) |>
-  sub_missing(missing_text = "—") |>
-  tab_options(
-    table.font.size = 36L,
-    column_labels.font.weight = "bold"
+  signed_degrees <- if_else(
+    str_ends(parts[, 2L], fixed("W")) | str_ends(parts[, 2L], fixed("S")),
+    -decimal_degrees,
+    decimal_degrees
   )
+
+  as.character(signed_degrees)
+}
 ```
 
-## Documenting your scripts
+## Documenting your code
 
-::: {.incremental}
+In your code:
 
-- Add a **header block** at the top of each script:
-  - Author, date, purpose.
-
-- Comment the [**why**]{.emphasize}, not the [**what**]{.emphasize}.
-
-- Use **meaningful variable names**.
-
-:::
-
-. . .
+- Avoid commenting the [what]{.emphasize}, and instead comment the [why]{.emphasize}.
+- Use meaningful variable names.
 
 :::: {.columns}
 
@@ -765,8 +724,8 @@ There are a few rules to adopt when naming files:
 
 This will ensure that the files are recognized by most operating systems and software.
 
-- [{{< fa check >}}]{style="color: #34A74BFF;"} `meeting_notes_jan2023.docx`
 - [{{< fa times >}}]{style="color: #E6352FFF;"} `meeting notes(jan2023).docx`
+- [{{< fa check >}}]{style="color: #34A74BFF;"} `meeting_notes_jan2023.docx`
 
 ## File naming basic rules
 
@@ -784,7 +743,7 @@ For sequential numbering, [use leading zeros to ensure files sort properly.]{.em
 
 ::: {.column width=50%}
 
-![Source: https://bit.ly/2M8cViI](img/screenshots/python_file_naming.png){fig-alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."}
+![Source: [https://bit.ly/2M8cViI](https://bit.ly/2M8cViI){target="_blank"}](img/screenshots/python_file_naming.png){fig-alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."}
 
 :::
 
@@ -864,15 +823,17 @@ _Imagine that you have to create a file containing temperature data from a weath
 
 . . .
 
-[Be consistent with variable name capitalization:]{.emphasize}
+Be consistent with variable name capitalization:
 
 [{{< fa check >}}]{style="color: #34A74BFF;"} `temperature`, `precipitation`
 
 [{{< fa check >}}]{style="color: #34A74BFF;"} `Temperature`, `Precipitation`
 
+<br>
+
 . . .
 
-[Avoid mixing name capitalization:]{.emphasize}
+Avoid mixing name capitalization:
 
 [{{< fa times >}}]{style="color: #E6352FFF;"} `temperature`, `Precipitation`
 
@@ -973,7 +934,7 @@ The main idea is that data should be organized in columns with [each column repr
 
 ## How data should be structured
 
-After proper transformations, the data is now tidy ([or in normal form](https://en.wikipedia.org/wiki/Database_normalization)). [Each column is a variable, and each row is an observation.]{.emphasize}
+After proper transformations, the data is now tidy ([or in normal form](https://en.wikipedia.org/wiki/Database_normalization){target="\_blank"}). [Each column is a variable, and each row is an observation.]{.emphasize}
 
 ::: {.center-align}
 
@@ -1137,9 +1098,9 @@ Those materials may be records created during the day-to-day business of an orga
 
 :::
 
-[^1]: [Network World](https://www.networkworld.com/article/3285652/backup-vs-archive-why-its-important-to-know-the-difference.html)
+[^1]: [Network World](https://www.networkworld.com/article/3285652/backup-vs-archive-why-its-important-to-know-the-difference.html){target="\_blank"}
 
-[^2]: [Dorey, J & Nappert, M. (2024, 7 novembre). La gestion des données de recherche : briser les silos et bâtir l’avenir [conférence]. Congrès des professionnel.le.s de l’information, Laval, Québec.](https://cpi.fmdoc.org/wp-content/uploads/2024/11/La-gestion-des-donnees-de-recherche-briser-les-silos-et-batir-lavenir.pdf)
+[^2]: [Dorey, J & Nappert, M. (2024, 7 novembre). La gestion des données de recherche : briser les silos et bâtir l’avenir [conférence]. Congrès des professionnel.le.s de l’information, Laval, Québec.](https://cpi.fmdoc.org/wp-content/uploads/2024/11/La-gestion-des-donnees-de-recherche-briser-les-silos-et-batir-lavenir.pdf){target="\_blank"}
 
 ## Importance of backups
 
@@ -1152,13 +1113,12 @@ Those materials may be records created during the day-to-day business of an orga
 
 - [{{< fa exclamation-triangle >}}]{style="color: #E6352FFF;"} A copy of your working directory in another directory on the same hard drive is not redundancy!
 
-- Backups should not be only done on your computer (use cloud services).
+- Backups should not be only done on your computer (use cloud services):
+  - Google Drive
 
-- Google Drive
+  - Microsoft OneDrive (1TB of space if working at Laval University)
 
-- Microsoft OneDrive (1TB of space if working at Laval University)
-
-- Dropbox
+  - Dropbox
 
 :::
 
@@ -1186,13 +1146,15 @@ Check with your institution or funding agency to see if they have a policy on da
 
 Use an incremental strategy to backup your data ([ideally daily]{.emphasize}):
 
-- [rsync](https://fr.wikipedia.org/wiki/Rsync)
+- [rsync](https://fr.wikipedia.org/wiki/Rsync){target="\_blank"}
 
-- [SyncBack](https://www.2brightsparks.com/syncback/syncback-hub.html)
+- [SyncBack](https://www.2brightsparks.com/syncback/syncback-hub.html){target="\_blank"}
 
-- [Duplicati](https://www.duplicati.com/)
+- [Duplicati](https://www.duplicati.com/){target="\_blank"}
 
-- [Syncthing](https://syncthing.net/)
+- [Syncthing](https://syncthing.net/){target="\_blank"}
+
+- [restic](https://restic.net/){target="\_blank"}
 
 I keep three months of data at three different locations:
 
@@ -1224,7 +1186,7 @@ I keep three months of data at three different locations:
 
 ## Publishing your data
 
-Many journals and [funding agencies](http://www.science.gc.ca/eic/site/063.nsf/fra/h_97610.html) now require to have archiving strategies. Why?
+Many journals and [funding agencies](http://www.science.gc.ca/eic/site/063.nsf/fra/h_97610.html){target="\_blank"} now require to have archiving strategies. Why?
 
 ::: {.incremental}
 
@@ -1249,7 +1211,7 @@ The traditional way to publish data is to include it as supplementary informatio
 - In an appendix along with your paper ([assuming that your paper is published in an open-access journal]{.emphasize}).
 - [Data presented in an appendix are rarely reviewed by peers.]{.emphasize}
 
-[The Directory of Open Access Journals](https://www.doaj.org/) is useful for searching for open access journals.
+[The Directory of Open Access Journals](https://www.doaj.org/){target="\_blank"} is useful for searching for open access journals.
 
 ![](img/logo/doaj_logo.png){.r-stretch fig-alt="Directory of Open Access Journals logo. The logo has three shapes on the left side and the text 'DOAJ' on the right side."}
 
@@ -1280,7 +1242,7 @@ Another way to publish data is to write a data paper.
 
 > A data paper is a **peer-reviewed document** describing a dataset, published in a peer-reviewed journal. It takes effort to prepare, curate and describe data. Data papers provide recognition for this effort by means of a scholarly article.
 >
-> [https://www.gbif.org/data-papers](https://www.gbif.org/data-papers)
+> [https://www.gbif.org/data-papers](https://www.gbif.org/data-papers){target="\_blank"}
 
 ## What is a data paper?
 
@@ -1364,16 +1326,13 @@ df_viz |>
 
 ## Open data repositories
 
-- Polar Data Catalogue [https://www.polardata.ca/](https://www.polardata.ca/){target="\_blank"}
 - Scholars Portal Dataverse [https://dataverse.scholarsportal.info/](https://dataverse.scholarsportal.info/){target="\_blank"}
 - Federated Research Data Repository [https://www.frdr-dfdr.ca/repo/?locale=fr](https://www.frdr-dfdr.ca/repo/?locale=fr){target="\_blank"}
-- Pangaea [https://www.pangaea.de/](https://www.pangaea.de/){target="\_blank"}
+- National Terrestrial Ecosystem Monitoring System (NTEMS) [https://opendata.nfis.org/mapserver/nfis-change_eng.html](https://opendata.nfis.org/mapserver/nfis-change_eng.html){target="\_blank"}
 - Dryad [https://datadryad.org](https://datadryad.org){target="\_blank"}
 - Catalogue de données ouverte OGSL [https://ogsl.ca/fr/](https://ogsl.ca/fr/){target="\_blank"}
 - Zenodo [https://zenodo.org/](https://zenodo.org/){target="\_blank"}
 - Figshare [https://figshare.com/](https://figshare.com/){target="\_blank"}
-- Seanoe [https://www.seanoe.org/](https://www.seanoe.org/){target="\_blank"}
-- NFS Arctic Data Center [https://arcticdata.io/](https://arcticdata.io/){target="\_blank"}
 - The Dataverse Project [https://dataverse.org/](https://dataverse.org/){target="\_blank"}
 
 # Take home messages {background-color="#2C404A"}
@@ -1388,7 +1347,7 @@ df_viz |>
 
 - Tidy and visually explore your data to remove obvious errors.
 
-- Document your data and scripts (README, data dictionary).
+- Document your data and scripts (`README`, data dictionary).
 
 - [Backups your data externally as often as possible.]{.emphasize}
   - Your hard drive will eventually crash, for sure!

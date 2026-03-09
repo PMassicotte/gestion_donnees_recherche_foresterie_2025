@@ -166,6 +166,15 @@ $white: #ffffff;
   font-size: 0.75em;
 }
 
+.reveal pre,
+.reveal pre.sourceCode,
+.reveal pre.numberSource,
+.reveal .code-copy-outer-scaffold,
+.reveal .sourceCode {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
 .reveal code {
   font-size: 1em;
   font-weight: bold;

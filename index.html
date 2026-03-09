@@ -98,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-842d0aae80de7d1431181288482704c4.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-85dab8050e1c7857df96fa10b3244675.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -255,10 +255,9 @@
 <li class="fragment">Tabular data.</li>
 <li class="fragment">Geographical data.</li>
 </ul></li>
-<li class="fragment"><p>Data project good practices.</p>
+<li class="fragment"><p>Data project organization and good practices.</p>
 <ul>
 <li class="fragment">Raw data management.</li>
-<li class="fragment">Project organization.</li>
 <li class="fragment">Documentation and metadata.</li>
 </ul></li>
 <li class="fragment"><p>File and variable naming.</p></li>
@@ -324,11 +323,11 @@
 </div></div>
 
 <aside><div>
-<p>Data source: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/">https://allisonhorst.github.io/palmerpenguins/</a> Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span>.</p>
+<p>Data source: Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" target="_blank">https://allisonhorst.github.io/palmerpenguins/</a> Artwork by <span class="citation" data-cites="allison_horst">@allison_horst</span>.</p>
 </div></aside></section>
 <section id="common-open-source-geographic-file-formats" class="slide level2">
 <h2>Common open-source geographic file formats</h2>
-<p>These files contain information on geographic features such as <span class="emphasize">points, lines or polygons</span>. There are a ton of <a href="https://gisgeography.com/gis-formats/">geographical file formats</a>, but here are some that are particularly popular.</p>
+<p>These files contain information on geographic features such as <span class="emphasize">points, lines or polygons</span>. There are a ton of <a href="https://gisgeography.com/gis-formats/" target="_blank">geographical file formats</a>, but here are some that are particularly popular.</p>
 <ul>
 <li class="fragment"><p>ESRI shapefile (<code>.SHP</code>)</p>
 <ul>
@@ -336,7 +335,7 @@
 </ul></li>
 <li class="fragment"><p>GeoJSON (<code>.json</code>, <code>.geojson</code>, JSON variant with simple geographical features)</p></li>
 <li class="fragment"><p>GeoTIFF (<code>.tif</code>, <code>.tiff</code>, TIFF variant enriched with GIS relevant metadata)</p></li>
-<li class="fragment"><p>GeoParquet (<code>.parquet</code>) is an <a href="https://geoparquet.org/">Open Geospatial Consortium (OGC) standard</a> standard that adds interoperable geospatial types (Point, Line, Polygon) to <a href="https://parquet.apache.org/">Apache Parquet</a>.</p></li>
+<li class="fragment"><p>GeoParquet (<code>.parquet</code>) is an <a href="https://geoparquet.org/" target="_blank">Open Geospatial Consortium (OGC) standard</a> standard that adds interoperable geospatial types (Point, Line, Polygon) to <a href="https://parquet.apache.org/" target="_blank">Apache Parquet</a>.</p></li>
 </ul>
 </section>
 <section id="the-geojson-format-polygons" class="slide level2">
@@ -366,7 +365,7 @@
 </div></div>
 
 <aside><div>
-<p>Create your own GeoJSON file online at <a href="https://geojson.io/">https://geojson.io/</a></p>
+<p>Create your own GeoJSON file online at <a href="https://geojson.io/" target="_blank">https://geojson.io/</a></p>
 </div></aside></section>
 <section id="the-geojson-format" class="slide level2">
 <h2>The GeoJSON format</h2>
@@ -377,7 +376,7 @@
 <p>Often associated with satellite imagery.</p>
 <blockquote>
 <p>GeoTIFF is a public domain metadata standard that allows <span class="emphasize">georeferencing information to be embedded within a TIFF file.</span> The potential additional information includes map projection, coordinate systems, ellipsoids, datums, and everything else necessary to establish the exact spatial reference for the file.</p>
-<p><a href="https://en.wikipedia.org/wiki/GeoTIFF">Wikipedia</a></p>
+<p><a href="https://en.wikipedia.org/wiki/GeoTIFF" target="_blank">Wikipedia</a></p>
 </blockquote>
 <div class="center-align">
 <p><img data-src="img/ai/geotiff.png" alt="AI generated image of a computer screen showing some sci-fi images." height="600"></p>
@@ -395,29 +394,29 @@
 <img data-src="index_files/figure-revealjs/sst-pixel-values-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Close-up view of Sea Surface Temperature pixel values in the St-Lawrence River, with numerical temperature values labeled within each raster cell." width="3000"></section>
 <section id="a-note-on-geospatial-data" class="slide level2">
 <h2>A note on geospatial data</h2>
-<p>It is usually a better idea to work with spatial objects (ex.: <code>GeoTIFF</code>) rather than tabular data.</p>
+<p>It is usually a better idea to work with spatial objects (ex.: <code>GeoTIFF</code>, or <code>geoparquet</code>) rather than tabular data.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Geographic data presented in a tabular form:</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="hmvkmxuvwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hmvkmxuvwb table {
+<div id="xsgumpgvpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xsgumpgvpx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hmvkmxuvwb thead, #hmvkmxuvwb tbody, #hmvkmxuvwb tfoot, #hmvkmxuvwb tr, #hmvkmxuvwb td, #hmvkmxuvwb th {
+#xsgumpgvpx thead, #xsgumpgvpx tbody, #xsgumpgvpx tfoot, #xsgumpgvpx tr, #xsgumpgvpx td, #xsgumpgvpx th {
   border-style: none;
 }
 
-#hmvkmxuvwb p {
+#xsgumpgvpx p {
   margin: 0;
   padding: 0;
 }
 
-#hmvkmxuvwb .gt_table {
+#xsgumpgvpx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -443,12 +442,12 @@
   border-left-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_caption {
+#xsgumpgvpx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hmvkmxuvwb .gt_title {
+#xsgumpgvpx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -460,7 +459,7 @@
   border-bottom-width: 0;
 }
 
-#hmvkmxuvwb .gt_subtitle {
+#xsgumpgvpx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -472,7 +471,7 @@
   border-top-width: 0;
 }
 
-#hmvkmxuvwb .gt_heading {
+#xsgumpgvpx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -484,13 +483,13 @@
   border-right-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_bottom_border {
+#xsgumpgvpx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_col_headings {
+#xsgumpgvpx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -505,7 +504,7 @@
   border-right-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_col_heading {
+#xsgumpgvpx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -525,7 +524,7 @@
   overflow-x: hidden;
 }
 
-#hmvkmxuvwb .gt_column_spanner_outer {
+#xsgumpgvpx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -537,15 +536,15 @@
   padding-right: 4px;
 }
 
-#hmvkmxuvwb .gt_column_spanner_outer:first-child {
+#xsgumpgvpx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hmvkmxuvwb .gt_column_spanner_outer:last-child {
+#xsgumpgvpx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hmvkmxuvwb .gt_column_spanner {
+#xsgumpgvpx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -557,11 +556,11 @@
   width: 100%;
 }
 
-#hmvkmxuvwb .gt_spanner_row {
+#xsgumpgvpx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hmvkmxuvwb .gt_group_heading {
+#xsgumpgvpx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -587,7 +586,7 @@
   text-align: left;
 }
 
-#hmvkmxuvwb .gt_empty_group_heading {
+#xsgumpgvpx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -602,15 +601,15 @@
   vertical-align: middle;
 }
 
-#hmvkmxuvwb .gt_from_md > :first-child {
+#xsgumpgvpx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hmvkmxuvwb .gt_from_md > :last-child {
+#xsgumpgvpx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hmvkmxuvwb .gt_row {
+#xsgumpgvpx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -629,7 +628,7 @@
   overflow-x: hidden;
 }
 
-#hmvkmxuvwb .gt_stub {
+#xsgumpgvpx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -642,7 +641,7 @@
   padding-right: 5px;
 }
 
-#hmvkmxuvwb .gt_stub_row_group {
+#xsgumpgvpx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -656,15 +655,15 @@
   vertical-align: top;
 }
 
-#hmvkmxuvwb .gt_row_group_first td {
+#xsgumpgvpx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hmvkmxuvwb .gt_row_group_first th {
+#xsgumpgvpx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hmvkmxuvwb .gt_summary_row {
+#xsgumpgvpx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -674,16 +673,16 @@
   padding-right: 5px;
 }
 
-#hmvkmxuvwb .gt_first_summary_row {
+#xsgumpgvpx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_first_summary_row.thick {
+#xsgumpgvpx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hmvkmxuvwb .gt_last_summary_row {
+#xsgumpgvpx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -693,7 +692,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_grand_summary_row {
+#xsgumpgvpx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -703,7 +702,7 @@
   padding-right: 5px;
 }
 
-#hmvkmxuvwb .gt_first_grand_summary_row {
+#xsgumpgvpx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,7 +712,7 @@
   border-top-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_last_grand_summary_row_top {
+#xsgumpgvpx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -723,11 +722,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_striped {
+#xsgumpgvpx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hmvkmxuvwb .gt_table_body {
+#xsgumpgvpx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -736,7 +735,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_footnotes {
+#xsgumpgvpx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -750,7 +749,7 @@
   border-right-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_footnote {
+#xsgumpgvpx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -759,7 +758,7 @@
   padding-right: 5px;
 }
 
-#hmvkmxuvwb .gt_sourcenotes {
+#xsgumpgvpx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -773,7 +772,7 @@
   border-right-color: #D3D3D3;
 }
 
-#hmvkmxuvwb .gt_sourcenote {
+#xsgumpgvpx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -781,72 +780,72 @@
   padding-right: 5px;
 }
 
-#hmvkmxuvwb .gt_left {
+#xsgumpgvpx .gt_left {
   text-align: left;
 }
 
-#hmvkmxuvwb .gt_center {
+#xsgumpgvpx .gt_center {
   text-align: center;
 }
 
-#hmvkmxuvwb .gt_right {
+#xsgumpgvpx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hmvkmxuvwb .gt_font_normal {
+#xsgumpgvpx .gt_font_normal {
   font-weight: normal;
 }
 
-#hmvkmxuvwb .gt_font_bold {
+#xsgumpgvpx .gt_font_bold {
   font-weight: bold;
 }
 
-#hmvkmxuvwb .gt_font_italic {
+#xsgumpgvpx .gt_font_italic {
   font-style: italic;
 }
 
-#hmvkmxuvwb .gt_super {
+#xsgumpgvpx .gt_super {
   font-size: 65%;
 }
 
-#hmvkmxuvwb .gt_footnote_marks {
+#xsgumpgvpx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hmvkmxuvwb .gt_asterisk {
+#xsgumpgvpx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hmvkmxuvwb .gt_indent_1 {
+#xsgumpgvpx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hmvkmxuvwb .gt_indent_2 {
+#xsgumpgvpx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hmvkmxuvwb .gt_indent_3 {
+#xsgumpgvpx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hmvkmxuvwb .gt_indent_4 {
+#xsgumpgvpx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hmvkmxuvwb .gt_indent_5 {
+#xsgumpgvpx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hmvkmxuvwb .katex-display {
+#xsgumpgvpx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hmvkmxuvwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xsgumpgvpx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -923,22 +922,16 @@
 <li class="fragment"><p>If you want to do some analyses in Excel <sup>1</sup>, make a copy of the file and do your calculations and graphs in the copy.</p></li>
 </ul>
 <div class="fragment">
-<p><span class="small">Source: <a href="https://dataoneorg.github.io/Education/bestpractices/preserve-information-keep">Preserve information: Keep raw data raw</a></span></p>
+<p><span class="small">Source: <a href="https://dataoneorg.github.io/Education/bestpractices/preserve-information-keep" target="_blank">Preserve information: Keep raw data raw</a></span></p>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>In fact, do not use Excel <i class="fa-solid fa-thumbs-down" aria-label="thumbs-down"></i></p></li></ol></aside></section>
-<section id="preserve-information-keep-your-raw-data-raw-1" class="slide level2">
-<h2>Preserve information: keep your raw data raw</h2>
-<p>If a script changes the content of a raw data file and <span class="emphasize">saves it in the same file, likely, the script will not work the second time because the structure of the file has changed</span>.</p>
-<div class="fragment">
-<div class="center-align">
-<p><img data-src="img/excalidraw/keep_raw_data_raw_01.png" style="width:80.0%" alt="Image showing that data can change after the data is cleaned. The column name is separated into two columns firstname and lastname."></p>
-</div>
-</div>
-</section>
 <section id="project-directory-structure" class="slide level2">
 <h2>Project directory structure</h2>
 <ul>
-<li class="fragment"><p>Choosing a logical and consistent way to organize your data files makes it easier for you and your colleagues to find and use your data.</p></li>
+<li class="fragment"><p>Choosing a logical and consistent way to organize your data files makes it easier for you and your colleagues to find and use your data.</p>
+<ul>
+<li class="fragment"><span class="emphasize">Each project should be self-contained and include all the necessary files to reproduce the analyses and results.</span></li>
+</ul></li>
 <li class="fragment"><p>Consider using a specific folder to store raw data files.</p></li>
 <li class="fragment"><p>In my workflow, I use a folder named <code>raw</code> in which I consider files as <span class="emphasize">read-only</span>.</p></li>
 <li class="fragment"><p><span class="emphasize">Data files produced by code</span> are placed in a folder named <code>clean</code>.</p></li>
@@ -950,572 +943,110 @@
 <p><img data-src="img/excalidraw/project_structure.png" style="width:60.0%" alt="Schematic showing a project directory structure."></p>
 </div>
 </section>
-<section id="project-directory-structure-2" class="slide level2">
-<h2>Project directory structure</h2>
-<p><span class="emphasize">Each project should be self-contained and include all the necessary files to reproduce the analyses and results.</span></p>
-<p><br></p>
-<p>Use a <code>README</code> file to provide an overview of the project and instructions on how to use the data and scripts. It can include:</p>
+<section id="documentation-and-metadata" class="slide level2">
+<h2>Documentation and metadata</h2>
+<p>Why bother documenting your data?</p>
+<ul>
+<li class="fragment"><p>Good documentation helps making your research <span class="emphasize">reproducible</span> and <span class="emphasize">reusable</span>.</p></li>
+<li class="fragment"><p>Data without documentation <span class="emphasize">loses its meaning over time</span>.</p></li>
+<li class="fragment"><p>A common scenario: a student finishes their degree and <span class="emphasize">nobody can understand their data or scripts</span>.</p></li>
+</ul>
+</section>
+<section id="documentation-and-metadata-1" class="slide level2">
+<h2>Documentation and metadata</h2>
+<ul>
+<li><p>Use a <code>README</code> file to provide an overview of the project and instructions on how to use the data and scripts.</p></li>
+<li><p>It can include:</p>
 <ol type="1">
 <li class="fragment"><p><strong>Project description</strong>: objectives and context.</p></li>
 <li class="fragment"><p><strong>Directory structure</strong>: what is in each folder.</p></li>
 <li class="fragment"><p><strong>How to run the analysis</strong>: dependencies, execution order.</p></li>
 <li class="fragment"><p><strong>Contact information</strong>: who to ask questions to.</p></li>
-</ol>
-</section>
-<section id="documentation-and-metadata" class="slide level2">
-<h2>Documentation and metadata</h2>
-<p>Why document your data?</p>
-<ul>
-<li class="fragment"><p>Data without documentation <span class="emphasize">loses its meaning over time</span>.</p></li>
-<li class="fragment"><p>Your future self (and your colleagues) will thank you.</p></li>
-<li class="fragment"><p>A common scenario: a student finishes their degree and <span class="emphasize">nobody can understand their data or scripts</span>.</p></li>
-<li class="fragment"><p>Good documentation makes your research <span class="emphasize">reproducible</span> and <span class="emphasize">reusable</span>.</p></li>
+</ol></li>
 </ul>
 </section>
-<section id="data-dictionary-codebook" class="slide level2">
-<h2>Data dictionary (codebook)</h2>
-<p>For each data file, document:</p>
-<ul>
-<li class="fragment"><p><strong>Variable name</strong>: as it appears in the file.</p></li>
-<li class="fragment"><p><strong>Description</strong>: what does it represent?</p></li>
-<li class="fragment"><p><strong>Units</strong>: meters, kilograms, degrees Celsius, etc.</p></li>
-<li class="fragment"><p><strong>Type</strong>: numeric, categorical, date, etc.</p></li>
-<li class="fragment"><p><strong>Allowed values</strong>: range or list of valid values.</p></li>
-</ul>
-</section>
-<section id="data-dictionary-example" class="slide level2">
-<h2>Data dictionary — example</h2>
-<p>A data dictionary can be a simple <code>CSV</code> file or a table in your README.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="vhjvcajxoi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vhjvcajxoi table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#vhjvcajxoi thead, #vhjvcajxoi tbody, #vhjvcajxoi tfoot, #vhjvcajxoi tr, #vhjvcajxoi td, #vhjvcajxoi th {
-  border-style: none;
-}
-
-#vhjvcajxoi p {
-  margin: 0;
-  padding: 0;
-}
-
-#vhjvcajxoi .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 36px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#vhjvcajxoi .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#vhjvcajxoi .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#vhjvcajxoi .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: bold;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#vhjvcajxoi .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: bold;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#vhjvcajxoi .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#vhjvcajxoi .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#vhjvcajxoi .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#vhjvcajxoi .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#vhjvcajxoi .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#vhjvcajxoi .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#vhjvcajxoi .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#vhjvcajxoi .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#vhjvcajxoi .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#vhjvcajxoi .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vhjvcajxoi .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#vhjvcajxoi .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#vhjvcajxoi .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#vhjvcajxoi .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vhjvcajxoi .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#vhjvcajxoi .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vhjvcajxoi .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#vhjvcajxoi .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vhjvcajxoi .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vhjvcajxoi .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vhjvcajxoi .gt_left {
-  text-align: left;
-}
-
-#vhjvcajxoi .gt_center {
-  text-align: center;
-}
-
-#vhjvcajxoi .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#vhjvcajxoi .gt_font_normal {
-  font-weight: normal;
-}
-
-#vhjvcajxoi .gt_font_bold {
-  font-weight: bold;
-}
-
-#vhjvcajxoi .gt_font_italic {
-  font-style: italic;
-}
-
-#vhjvcajxoi .gt_super {
-  font-size: 65%;
-}
-
-#vhjvcajxoi .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#vhjvcajxoi .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#vhjvcajxoi .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#vhjvcajxoi .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#vhjvcajxoi .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#vhjvcajxoi .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#vhjvcajxoi .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#vhjvcajxoi .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#vhjvcajxoi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_col_headings header">
-<th id="variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
-<th id="description" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Description</th>
-<th id="unit" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Unit</th>
-<th id="type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Type</th>
-<th id="allowed_values" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Allowed values</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">site_id</td>
-<td class="gt_row gt_left" headers="description">Unique site identifier</td>
-<td class="gt_row gt_left" headers="unit">—</td>
-<td class="gt_row gt_left" headers="type">text</td>
-<td class="gt_row gt_left" headers="allowed_values">S001, S002, ...</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="variable">species</td>
-<td class="gt_row gt_left" headers="description">Tree species code</td>
-<td class="gt_row gt_left" headers="unit">—</td>
-<td class="gt_row gt_left" headers="type">categorical</td>
-<td class="gt_row gt_left" headers="allowed_values">PICEA_MAR, ABIES_BAL, ...</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">dbh</td>
-<td class="gt_row gt_left" headers="description">Diameter at breast height</td>
-<td class="gt_row gt_left" headers="unit">cm</td>
-<td class="gt_row gt_left" headers="type">numeric</td>
-<td class="gt_row gt_left" headers="allowed_values">0.1–150</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="variable">height</td>
-<td class="gt_row gt_left" headers="description">Total tree height</td>
-<td class="gt_row gt_left" headers="unit">m</td>
-<td class="gt_row gt_left" headers="type">numeric</td>
-<td class="gt_row gt_left" headers="allowed_values">0.5–50</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="variable">date_measured</td>
-<td class="gt_row gt_left" headers="description">Date of measurement</td>
-<td class="gt_row gt_left" headers="unit">—</td>
-<td class="gt_row gt_left" headers="type">date</td>
-<td class="gt_row gt_left" headers="allowed_values">YYYY-MM-DD</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
+<section id="readme-file-example" class="slide level2">
+<h2>README file example</h2>
+<div style="border: 1px solid #d0d7de; border-radius: 6px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 22px; width: 100%; height: 80vh; display: flex; flex-direction: column; box-sizing: border-box; background-color: #ffffff;">
+  <div style="background: #f6f8fa; padding: 12px 24px; border-bottom: 1px solid #d0d7de; border-radius: 6px 6px 0 0; color: #57606a; display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+    📄 <strong>README.md</strong>
+  </div>
+  <div style="padding: 24px 40px; line-height: 1.6; flex: 1; display: flex; flex-direction: column; justify-content: space-evenly;">
+    <h1 style="font-size: 1.4em; border-bottom: 1px solid #d0d7de; padding-bottom: 6px; margin: 0;">Forest Inventory 2024</h1>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">Project description</h2>
+      <p style="margin: 0;">Inventory of tree species and diameter at breast height (DBH) in the Montmorency Forest, collected in summer 2024.</p>
+    </div>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">Directory structure</h2>
+      <pre style="background: #f6f8fa; padding: 12px 18px; border-radius: 6px; font-size: 18px; line-height: 1.6; margin: 0;">project/
+├── data/
+│   ├── raw/          # Raw field data (do not modify)
+│   └── processed/    # Cleaned datasets
+├── scripts/          # R analysis scripts
+├── results/          # Figures and tables
+└── README.md</pre>
+    </div>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">How to run</h2>
+      <p style="margin: 0;">Run scripts in order: <code style="background:#f6f8fa; padding: 2px 6px; border-radius: 4px;">01_clean.R</code> → <code style="background:#f6f8fa; padding: 2px 6px; border-radius: 4px;">02_analysis.R</code> → <code style="background:#f6f8fa; padding: 2px 6px; border-radius: 4px;">03_figures.R</code></p>
+    </div>
+    <div>
+      <h2 style="font-size: 1.1em; margin: 0 0 4px 0;">Contact</h2>
+      <p style="margin: 0;">Jane Doe — <a href="mailto:jane.doe@ulaval.ca" style="color: #0969da;">jane.doe@ulaval.ca</a></p>
+    </div>
+  </div>
 </div>
 </section>
-<section id="documenting-your-scripts" class="slide level2">
-<h2>Documenting your scripts</h2>
+<section id="documenting-your-code" class="slide level2">
+<h2>Documenting your code</h2>
+<p>Add a <strong>header block</strong> at the top of each script/function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="font-size: 1em;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co">#' Convert Coordinates</span></span>
+<span id="cb2-2"><a href=""></a><span class="co">#'</span></span>
+<span id="cb2-3"><a href=""></a><span class="co">#' This function converts coordinates from degrees and minutes to decimal</span></span>
+<span id="cb2-4"><a href=""></a><span class="co">#' degrees.</span></span>
+<span id="cb2-5"><a href=""></a><span class="co">#'</span></span>
+<span id="cb2-6"><a href=""></a><span class="co">#' @param coords A character vector of coordinates in the format "degrees</span></span>
+<span id="cb2-7"><a href=""></a><span class="co">#' minutes".</span></span>
+<span id="cb2-8"><a href=""></a><span class="co">#'</span></span>
+<span id="cb2-9"><a href=""></a><span class="co">#' @return A character vector of coordinates in decimal degrees.</span></span>
+<span id="cb2-10"><a href=""></a>convert_coords <span class="ot">&lt;-</span> <span class="cf">function</span>(coords) {</span>
+<span id="cb2-11"><a href=""></a>  parts <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(coords, <span class="st">" "</span>, <span class="dv">2</span>L)</span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a>  degrees <span class="ot">&lt;-</span> <span class="fu">parse_number</span>(parts[, <span class="dv">1</span>L])</span>
+<span id="cb2-14"><a href=""></a>  minutes <span class="ot">&lt;-</span> <span class="fu">parse_number</span>(parts[, <span class="dv">2</span>L])</span>
+<span id="cb2-15"><a href=""></a></span>
+<span id="cb2-16"><a href=""></a>  decimal_degrees <span class="ot">&lt;-</span> degrees <span class="sc">+</span> (minutes <span class="sc">/</span> <span class="dv">60</span>L)</span>
+<span id="cb2-17"><a href=""></a></span>
+<span id="cb2-18"><a href=""></a>  signed_degrees <span class="ot">&lt;-</span> <span class="fu">if_else</span>(</span>
+<span id="cb2-19"><a href=""></a>    <span class="fu">str_ends</span>(parts[, <span class="dv">2</span>L], <span class="fu">fixed</span>(<span class="st">"W"</span>)) <span class="sc">|</span> <span class="fu">str_ends</span>(parts[, <span class="dv">2</span>L], <span class="fu">fixed</span>(<span class="st">"S"</span>)),</span>
+<span id="cb2-20"><a href=""></a>    <span class="sc">-</span>decimal_degrees,</span>
+<span id="cb2-21"><a href=""></a>    decimal_degrees</span>
+<span id="cb2-22"><a href=""></a>  )</span>
+<span id="cb2-23"><a href=""></a></span>
+<span id="cb2-24"><a href=""></a>  <span class="fu">as.character</span>(signed_degrees)</span>
+<span id="cb2-25"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="documenting-your-code-1" class="slide level2">
+<h2>Documenting your code</h2>
+<p>In your code:</p>
 <ul>
-<li class="fragment"><p>Add a <strong>header block</strong> at the top of each script:</p>
-<ul>
-<li class="fragment">Author, date, purpose.</li>
-</ul></li>
-<li class="fragment"><p>Comment the <span class="emphasize"><strong>why</strong></span>, not the <span class="emphasize"><strong>what</strong></span>.</p></li>
-<li class="fragment"><p>Use <strong>meaningful variable names</strong>.</p></li>
+<li>Avoid commenting the <span class="emphasize">what</span>, and instead comment the <span class="emphasize">why</span>.</li>
+<li>Use meaningful variable names.</li>
 </ul>
-<div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Bad <span style="color: #E6352FFF;"><i class="fa-solid fa-times" aria-label="times"></i></span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Set x to 5</span></span>
-<span id="cb2-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb2-3"><a href=""></a>d <span class="ot">&lt;-</span> d[d<span class="sc">$</span>v <span class="sc">&gt;</span> x, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Set x to 5</span></span>
+<span id="cb3-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-3"><a href=""></a>d <span class="ot">&lt;-</span> d[d<span class="sc">$</span>v <span class="sc">&gt;</span> x, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <p>Good <span style="color: #34A74BFF;"><i class="fa-solid fa-check" aria-label="check"></i></span></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Trees below 5 cm DBH are likely</span></span>
-<span id="cb3-2"><a href=""></a><span class="co"># measurement errors (see protocol v2)</span></span>
-<span id="cb3-3"><a href=""></a>min_dbh_cm <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb3-4"><a href=""></a>trees <span class="ot">&lt;-</span> trees[trees<span class="sc">$</span>dbh <span class="sc">&gt;</span> min_dbh_cm, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Trees below 5 cm DBH are likely</span></span>
+<span id="cb4-2"><a href=""></a><span class="co"># measurement errors (see protocol v2)</span></span>
+<span id="cb4-3"><a href=""></a>min_dbh_cm <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb4-4"><a href=""></a>trees <span class="ot">&lt;-</span> trees[trees<span class="sc">$</span>dbh <span class="sc">&gt;</span> min_dbh_cm, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
-</div>
 </section></section>
 <section>
 <section id="file-and-variable-naming" class="title-slide slide level1 center" data-background-color="#2C404A">
@@ -1539,8 +1070,8 @@
 </ul>
 <p>This will ensure that the files are recognized by most operating systems and software.</p>
 <ul>
-<li><span style="color: #34A74BFF;"><i class="fa-solid fa-check" aria-label="check"></i></span> <code>meeting_notes_jan2023.docx</code></li>
 <li><span style="color: #E6352FFF;"><i class="fa-solid fa-times" aria-label="times"></i></span> <code>meeting notes(jan2023).docx</code></li>
+<li><span style="color: #34A74BFF;"><i class="fa-solid fa-check" aria-label="check"></i></span> <code>meeting_notes_jan2023.docx</code></li>
 </ul>
 </section>
 <section id="file-naming-basic-rules-1" class="slide level2">
@@ -1560,7 +1091,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="img/screenshots/python_file_naming.png" alt="Screenshot of a scientific taking his head in his hands and sitting at a desk."></p>
-<figcaption>Source: https://bit.ly/2M8cViI</figcaption>
+<figcaption>Source: <a href="https://bit.ly/2M8cViI" target="_blank">https://bit.ly/2M8cViI</a></figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1616,12 +1147,13 @@
 <section id="variable-names" class="slide level2">
 <h2>Variable names</h2>
 <div class="fragment">
-<p><span class="emphasize">Be consistent with variable name capitalization:</span></p>
+<p>Be consistent with variable name capitalization:</p>
 <p><span style="color: #34A74BFF;"><i class="fa-solid fa-check" aria-label="check"></i></span> <code>temperature</code>, <code>precipitation</code></p>
 <p><span style="color: #34A74BFF;"><i class="fa-solid fa-check" aria-label="check"></i></span> <code>Temperature</code>, <code>Precipitation</code></p>
+<p><br></p>
 </div>
 <div class="fragment">
-<p><span class="emphasize">Avoid mixing name capitalization:</span></p>
+<p>Avoid mixing name capitalization:</p>
 <p><span style="color: #E6352FFF;"><i class="fa-solid fa-times" aria-label="times"></i></span> <code>temperature</code>, <code>Precipitation</code></p>
 <p><span style="color: #E6352FFF;"><i class="fa-solid fa-times" aria-label="times"></i></span> <code>temperature_min</code>, <code>TemperatureMax</code></p>
 </div>
@@ -1652,9 +1184,9 @@
 <p><img data-src="img/screenshots/invalid_multibyte_string.png" style="width:70.0%" alt="Screenshot showing an error message in R when trying to read a file with a special character."></p>
 </div>
 <div class="fragment">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>r<span class="sc">$</span><span class="er">&gt;</span> <span class="fu">read_csv</span>(<span class="st">"myfile.csv"</span>)</span>
-<span id="cb4-2"><a href=""></a>Rows<span class="sc">:</span> <span class="dv">104937</span> Columns<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb4-3"><a href=""></a>Error <span class="cf">in</span> <span class="fu">nchar</span>(x, <span class="st">"width"</span>) <span class="sc">:</span> invalid multibyte string, element <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>r<span class="sc">$</span><span class="er">&gt;</span> <span class="fu">read_csv</span>(<span class="st">"myfile.csv"</span>)</span>
+<span id="cb5-2"><a href=""></a>Rows<span class="sc">:</span> <span class="dv">104937</span> Columns<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb5-3"><a href=""></a>Error <span class="cf">in</span> <span class="fu">nchar</span>(x, <span class="st">"width"</span>) <span class="sc">:</span> invalid multibyte string, element <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <aside><div>
@@ -1711,7 +1243,7 @@
 </section>
 <section id="how-data-should-be-structured" class="slide level2">
 <h2>How data should be structured</h2>
-<p>After proper transformations, the data is now tidy (<a href="https://en.wikipedia.org/wiki/Database_normalization">or in normal form</a>). <span class="emphasize">Each column is a variable, and each row is an observation.</span></p>
+<p>After proper transformations, the data is now tidy (<a href="https://en.wikipedia.org/wiki/Database_normalization" target="_blank">or in normal form</a>). <span class="emphasize">Each column is a variable, and each row is an observation.</span></p>
 <div class="center-align">
 <p><img data-src="img/excalidraw/species_wide_to_long.png" style="width:90.0%" alt="Image showing a frequent method to enter count data in spreadsheet software."></p>
 </div>
@@ -1820,7 +1352,7 @@
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p><a href="https://www.networkworld.com/article/3285652/backup-vs-archive-why-its-important-to-know-the-difference.html">Network World</a></p></li><li id="fn3"><p><a href="https://cpi.fmdoc.org/wp-content/uploads/2024/11/La-gestion-des-donnees-de-recherche-briser-les-silos-et-batir-lavenir.pdf">Dorey, J &amp; Nappert, M. (2024, 7 novembre). La gestion des données de recherche : briser les silos et bâtir l’avenir [conférence]. Congrès des professionnel.le.s de l’information, Laval, Québec.</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p><a href="https://www.networkworld.com/article/3285652/backup-vs-archive-why-its-important-to-know-the-difference.html" target="_blank">Network World</a></p></li><li id="fn3"><p><a href="https://cpi.fmdoc.org/wp-content/uploads/2024/11/La-gestion-des-donnees-de-recherche-briser-les-silos-et-batir-lavenir.pdf" target="_blank">Dorey, J &amp; Nappert, M. (2024, 7 novembre). La gestion des données de recherche : briser les silos et bâtir l’avenir [conférence]. Congrès des professionnel.le.s de l’information, Laval, Québec.</a></p></li></ol></aside></section>
 <section id="importance-of-backups" class="slide level2">
 <h2>Importance of backups</h2>
 <div class="medium">
@@ -1828,10 +1360,12 @@
 <li class="fragment"><p><span class="emphasize">Disk space is much cheaper than the time you invested in collecting, cleaning and analyzing your data.</span></p></li>
 <li class="fragment"><p>It is important to have <span class="emphasize">redundancy</span> in your data.</p></li>
 <li class="fragment"><p><span style="color: #E6352FFF;"><i class="fa-solid fa-exclamation-triangle" aria-label="exclamation-triangle"></i></span> A copy of your working directory in another directory on the same hard drive is not redundancy!</p></li>
-<li class="fragment"><p>Backups should not be only done on your computer (use cloud services).</p></li>
+<li class="fragment"><p>Backups should not be only done on your computer (use cloud services):</p>
+<ul>
 <li class="fragment"><p>Google Drive</p></li>
 <li class="fragment"><p>Microsoft OneDrive (1TB of space if working at Laval University)</p></li>
 <li class="fragment"><p>Dropbox</p></li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
@@ -1878,10 +1412,11 @@
 <h2>Importance of backups</h2>
 <p>Use an incremental strategy to backup your data (<span class="emphasize">ideally daily</span>):</p>
 <ul>
-<li><p><a href="https://fr.wikipedia.org/wiki/Rsync">rsync</a></p></li>
-<li><p><a href="https://www.2brightsparks.com/syncback/syncback-hub.html">SyncBack</a></p></li>
-<li><p><a href="https://www.duplicati.com/">Duplicati</a></p></li>
-<li><p><a href="https://syncthing.net/">Syncthing</a></p></li>
+<li><p><a href="https://fr.wikipedia.org/wiki/Rsync" target="_blank">rsync</a></p></li>
+<li><p><a href="https://www.2brightsparks.com/syncback/syncback-hub.html" target="_blank">SyncBack</a></p></li>
+<li><p><a href="https://www.duplicati.com/" target="_blank">Duplicati</a></p></li>
+<li><p><a href="https://syncthing.net/" target="_blank">Syncthing</a></p></li>
+<li><p><a href="https://restic.net/" target="_blank">restic</a></p></li>
 </ul>
 <p>I keep three months of data at three different locations:</p>
 <ol type="1">
@@ -1915,7 +1450,7 @@
 </section>
 <section id="publishing-your-data-1" class="slide level2">
 <h2>Publishing your data</h2>
-<p>Many journals and <a href="http://www.science.gc.ca/eic/site/063.nsf/fra/h_97610.html">funding agencies</a> now require to have archiving strategies. Why?</p>
+<p>Many journals and <a href="http://www.science.gc.ca/eic/site/063.nsf/fra/h_97610.html" target="_blank">funding agencies</a> now require to have archiving strategies. Why?</p>
 <ul>
 <li class="fragment"><p>Share your data (publicly funded research should be accessible).</p></li>
 <li class="fragment"><p>Make your data discoverable.</p></li>
@@ -1935,7 +1470,7 @@
 <li>In an appendix along with your paper (<span class="emphasize">assuming that your paper is published in an open-access journal</span>).</li>
 <li><span class="emphasize">Data presented in an appendix are rarely reviewed by peers.</span></li>
 </ul>
-<p><a href="https://www.doaj.org/">The Directory of Open Access Journals</a> is useful for searching for open access journals.</p>
+<p><a href="https://www.doaj.org/" target="_blank">The Directory of Open Access Journals</a> is useful for searching for open access journals.</p>
 <img data-src="img/logo/doaj_logo.png" class="r-stretch" alt="Directory of Open Access Journals logo. The logo has three shapes on the left side and the text 'DOAJ' on the right side.">
 </section>
 <section id="public-announcement" class="slide level2">
@@ -1963,7 +1498,7 @@
 </ul>
 <blockquote>
 <p>A data paper is a <strong>peer-reviewed document</strong> describing a dataset, published in a peer-reviewed journal. It takes effort to prepare, curate and describe data. Data papers provide recognition for this effort by means of a scholarly article.</p>
-<p><a href="https://www.gbif.org/data-papers">https://www.gbif.org/data-papers</a></p>
+<p><a href="https://www.gbif.org/data-papers" target="_blank">https://www.gbif.org/data-papers</a></p>
 </blockquote>
 </section>
 <section id="what-is-a-data-paper-1" class="slide level2">
@@ -1987,16 +1522,13 @@
 <section id="open-data-repositories" class="slide level2">
 <h2>Open data repositories</h2>
 <ul>
-<li>Polar Data Catalogue <a href="https://www.polardata.ca/" target="_blank">https://www.polardata.ca/</a></li>
 <li>Scholars Portal Dataverse <a href="https://dataverse.scholarsportal.info/" target="_blank">https://dataverse.scholarsportal.info/</a></li>
 <li>Federated Research Data Repository <a href="https://www.frdr-dfdr.ca/repo/?locale=fr" target="_blank">https://www.frdr-dfdr.ca/repo/?locale=fr</a></li>
-<li>Pangaea <a href="https://www.pangaea.de/" target="_blank">https://www.pangaea.de/</a></li>
+<li>National Terrestrial Ecosystem Monitoring System (NTEMS) <a href="https://opendata.nfis.org/mapserver/nfis-change_eng.html" target="_blank">https://opendata.nfis.org/mapserver/nfis-change_eng.html</a></li>
 <li>Dryad <a href="https://datadryad.org" target="_blank">https://datadryad.org</a></li>
 <li>Catalogue de données ouverte OGSL <a href="https://ogsl.ca/fr/" target="_blank">https://ogsl.ca/fr/</a></li>
 <li>Zenodo <a href="https://zenodo.org/" target="_blank">https://zenodo.org/</a></li>
 <li>Figshare <a href="https://figshare.com/" target="_blank">https://figshare.com/</a></li>
-<li>Seanoe <a href="https://www.seanoe.org/" target="_blank">https://www.seanoe.org/</a></li>
-<li>NFS Arctic Data Center <a href="https://arcticdata.io/" target="_blank">https://arcticdata.io/</a></li>
 <li>The Dataverse Project <a href="https://dataverse.org/" target="_blank">https://dataverse.org/</a></li>
 </ul>
 </section></section>
@@ -2011,7 +1543,7 @@
 <li class="fragment"><p>Choose non-proprietary file formats (ex.: <code>CSV</code>).</p></li>
 <li class="fragment"><p>Give your files and variables meaningful names.</p></li>
 <li class="fragment"><p>Tidy and visually explore your data to remove obvious errors.</p></li>
-<li class="fragment"><p>Document your data and scripts (README, data dictionary).</p></li>
+<li class="fragment"><p>Document your data and scripts (<code>README</code>, data dictionary).</p></li>
 <li class="fragment"><p><span class="emphasize">Backups your data externally as often as possible.</span></p>
 <ul>
 <li class="fragment">Your hard drive will eventually crash, for sure!</li>

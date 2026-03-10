@@ -209,7 +209,7 @@ These files contain information on geographic features such as [points, lines or
 ::: {.incremental}
 
 - ESRI shapefile (`.SHP`)
-  - Technically, the shapefile format is not open. [It is however widely used.]{.emphasize}
+  - Technically, the shapefile format is not open. [It is, however, widely used.]{.emphasize}
 
 - GeoJSON (`.json`, `.geojson`, JSON variant with simple geographical features)
 
@@ -1095,7 +1095,7 @@ A backup is a copy of data created to restore said data in case of damage or los
 
 **The series of managed activities necessary to ensure continued access to digital materials for as long as necessary.** Digital preservation is defined very broadly and refers to all of the actions required to maintain access to digital materials beyond the limits of media failure or technological change.
 
-Those materials may be records created during the day-to-day business of an organization; 'born-digital' materials created for a specific purpose(e.g., teaching resources); or the products of digitization projects. This definition specifically excludes the potential use of digital technology to preserve the original artefacts through digitization.[^2]
+Those materials may be records created during the day-to-day business of an organization; 'born-digital' materials created for a specific purpose (e.g., teaching resources); or the products of digitization projects. This definition specifically excludes the potential use of digital technology to preserve the original artefacts through digitization.[^2]
 
 :::
 
@@ -1331,7 +1331,7 @@ df_viz |>
 - Federated Research Data Repository [https://www.frdr-dfdr.ca/repo/?locale=fr](https://www.frdr-dfdr.ca/repo/?locale=fr){target="\_blank"}
 - National Terrestrial Ecosystem Monitoring System (NTEMS) [https://opendata.nfis.org/mapserver/nfis-change_eng.html](https://opendata.nfis.org/mapserver/nfis-change_eng.html){target="\_blank"}
 - Dryad [https://datadryad.org](https://datadryad.org){target="\_blank"}
-- Catalogue de données ouverte OGSL [https://ogsl.ca/fr/](https://ogsl.ca/fr/){target="\_blank"}
+- Catalogue de données de l'OGSL [https://ogsl.ca/fr/](https://ogsl.ca/fr/){target="\_blank"}
 - Zenodo [https://zenodo.org/](https://zenodo.org/){target="\_blank"}
 - Figshare [https://figshare.com/](https://figshare.com/){target="\_blank"}
 - The Dataverse Project [https://dataverse.org/](https://dataverse.org/){target="\_blank"}
@@ -1350,7 +1350,7 @@ df_viz |>
 
 - Document your data and scripts (`README`, data dictionary).
 
-- [Backups your data externally as often as possible.]{.emphasize}
+- [Back up your data externally as often as possible.]{.emphasize}
   - Your hard drive will eventually crash, for sure!
 
 - Use a version control system (git) for your analysis scripts.

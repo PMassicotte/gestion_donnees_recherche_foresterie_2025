@@ -149,9 +149,9 @@ Ideally, the chosen file format should have these characteristics:
 
 1. **Non-proprietary**: open source.
 
-2. **Unencrypted**: [unless it contains personal or sensitive data.]{.emphasize}
+2. **Unencrypted**: [unless it contains personal or sensitive data]{.emphasize}.
 
-3. **Human-readable**: the file should be human-readable [or have open source tools available for reading and writing]{.emphasize}.
+3. **Human-readable**: [or have open source tools available for reading and writing]{.emphasize}.
 
 4. **Performance**: consideration for efficient read and write operations, especially for large datasets, is crucial for optimal performance.
 
@@ -575,7 +575,8 @@ Why bother documenting your data?
 
 - Data without documentation [loses its meaning over time]{.emphasize}.
 
-- A common scenario: a student finishes their degree and [nobody can understand their data or scripts]{.emphasize}.
+- A common scenario:
+  - a student finishes their degree and [nobody can understand their data or scripts]{.emphasize}.
 
 :::
 

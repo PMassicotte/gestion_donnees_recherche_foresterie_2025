@@ -531,6 +531,7 @@ Basic recommendations to preserve the raw data for future use:
 ::: {.incremental}
 
 - Do not make any changes or corrections to the original raw data files.
+  - [Changes made today may turn out to be wrong tomorrow.]{.emphasize}
 
 - [Use a scripted language (R, Python, Matlab, etc.) to perform analysis or make corrections and save that information in a separate file.]{.emphasize}
 
@@ -679,7 +680,7 @@ Bad [{{< fa times >}}]{style="color: #E6352FFF;"}
 
 ```r
 # Set x to 5
-x <- 5
+x <- 5L
 d <- d[d$v > x, ]
 ```
 
@@ -692,7 +693,7 @@ Good [{{< fa check >}}]{style="color: #34A74BFF;"}
 ```r
 # Trees below 5 cm DBH are likely
 # measurement errors (see protocol v2)
-min_dbh_cm <- 5
+min_dbh_cm <- 5L
 trees <- trees[trees$dbh > min_dbh_cm, ]
 ```
 

@@ -3,7 +3,7 @@ title: "Data Management Best Practices"
 subtitle: "Making your data projects more reproducible, reusable and open"
 author: "Philippe Massicotte"
 institute: "Laval University"
-date: "2025-03-11"
+date: "2026-03-11"
 date-format: long
 title-slide-attributes:
   data-background-size: 100% 100%
@@ -14,7 +14,7 @@ format:
       - title-slide.html
     fig-dpi: 300
     theme: style/slides.scss
-    footer: "[{{< fa house >}} https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025](https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025)"
+    footer: "[{{< fa house >}} https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2026](https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2026)"
     height: 1080
     width: 1920
     slide-number: c/t
@@ -27,7 +27,7 @@ execute:
 
 citation:
   type: speech
-  url: https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2025
+  url: https://pmassicotte.github.io/gestion_donnees_recherche_foresterie_2026
   language: fr-CA
 ---
 
